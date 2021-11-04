@@ -14,7 +14,7 @@ const app = express(); // initialize Express application
 app.use(morgan('dev')); // connect the morgan middleware for logging info about requests and responses
 app.use(cookieParser()); // parse cookies
 app.use(express.json()); // parse JSON bodies of requests with "Content-Type" of "application/json" 
-app.use(routes); // Connect all the routes
+
 
 // Security Middleware
 if (!isProduction) {
@@ -38,7 +38,8 @@ app.use(
 );
 // csurf middleware will add a _csrf cookie that is HTTP-only (can't be read by JavaScript) to any server response. It also adds a method on all requests (req.csrfToken) that will be set to another cookie (XSRF-TOKEN) later on. These two cookies work together to provide CSRF (Cross-Site Request Forgery) protection for your application.
 
-
+// make sure this is AFTER the app.use(csurf) to be able to be able to use the req.csrfToken
+app.use(routes); // Connect all the routes
 
 
 
