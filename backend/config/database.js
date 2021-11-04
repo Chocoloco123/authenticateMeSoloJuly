@@ -1,4 +1,6 @@
 // backend/config/database.js
+// This will allow you to load the database configuration environment variables from the .env file into the config/index.js.
+
 const config = require('./index');
 
 const db = config.db;
