@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === "production") {
   enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 }
 
+// export called restoreCSRF calls custom csrfFetch function with /api/csrf/restore as the url parameter
 const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
