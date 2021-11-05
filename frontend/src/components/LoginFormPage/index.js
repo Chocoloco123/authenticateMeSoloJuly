@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+// import { IdyllicLogo } from '../../media/Green Arrows Environment Logo/5.png'
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -28,6 +29,7 @@ function LoginFormPage() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Login</h1>
+      {/* <img src={IdyllicLogo} alt="Idyllic logo"/> */}
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
