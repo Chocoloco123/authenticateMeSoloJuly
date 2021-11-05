@@ -32,10 +32,27 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+// function to retain user info across refresh
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch('/api/session');
   const data = await response.json();
   console.log(data);
+  dispatch(setUser(data.user));
+  return response;
+};
+
+// function to signup user
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
