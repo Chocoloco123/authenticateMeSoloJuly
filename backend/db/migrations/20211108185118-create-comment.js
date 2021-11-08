@@ -13,11 +13,6 @@ module.exports = {
         allowNull: false,
         references: { model: 'Users' }
       },
-      username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: { model: 'Users' }
-      },
       imageId: {
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -6,11 +6,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: { model: 'Users' }
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: { model: 'Users' }
-    },
     imageId: {
       type: DataTypes.INTEGER,
       allowNull: false,
