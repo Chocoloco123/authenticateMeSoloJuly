@@ -15,8 +15,9 @@ module.exports = {
     return queryInterface.bulkInsert('Images', [
       {
       userId: 1,
-      albumId: 1,
-      
+      imageUrl: 'https://res.cloudinary.com/dsz4sha80/image/upload/v1636392866/pexels-pixabay-206359_agy77s.jpg',
+      imageTitle: 'Purple Sky',
+      content: 'Took this photo last spring. I wanted to capture the beauty of this colorful scene with the reflection of the lake.'
     }], {});
   },
 
@@ -30,7 +31,7 @@ module.exports = {
     */
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Images', {
-
+      
     }, {});
   }
 };
