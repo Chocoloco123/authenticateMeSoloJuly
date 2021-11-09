@@ -1,1 +1,113 @@
 /* TODO Add site wide styles */
+
+.navDiv {
+  display: flex;
+  text-decoration: none;
+  background-color: darkseagreen
+}
+
+a {
+  text-decoration: none;
+  padding: 5px;
+  font-size: 20px;
+} 
+
+a.active {
+  color: white;
+}
+a.active:hover {
+  color: gray;
+  /* background: lightgoldenrodyellow; */
+  /* margin: 5px; */
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+a:visited {
+  color: white;
+  padding: 20px;
+  margin: 5px;
+}
+
+a:visited:hover {
+  color: gray;
+  /* background: lightgoldenrodyellow; */
+  /* margin: 5px; */
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.navbarItem:hover {
+  color: black;
+  /* background: lightgoldenrodyellow; */
+  margin: 5px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.navbarItem {
+  text-decoration: none;
+  color: white;
+  margin: 5px;
+}
+
+.navUl{
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0px;
+  /* background-color: #2d9d49; */
+  /* background-color: darkseagreen */
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  /* margin: 10px 10px; */
+  margin: 40px 25% 10%;
+  box-shadow: 0px 0px 5px 2px lightgrey;
+  padding-left: 10px;
+  overflow-y: hidden;
+  /* border: solid; */
+  border-radius: 5px;
+}
+
+body {
+  /* display: flex; */
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+
+/* Signup & Login forms */
+h1 {
+  margin: 10px;
+}
+
+.authInputs {
+  margin:5px;
+}
+
+.signupLoginBtn {
+  margin-bottom: 10px;
+}
+
+.signupLoginBtn:hover {
+  color: red;
+  
+}
+
+.signupLoginSubmit {
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 2px 2px 2px green;
+}
+
+.signupLoginSubmit:hover {
+  color: darkgreen;
+  background: lightgray;
+  box-shadow: none;
+  transition: 0.2s all;
+}

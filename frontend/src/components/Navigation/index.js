@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import IdyllicLogo from '../../media/IdyllicLogos/IdyllicLogo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -22,12 +23,17 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul class='navUl'>
-      <li>
-        <NavLink exact to="/" class="navbarItem">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div class='boxAroundNav'>
+      <div class='navDiv'>
+        <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/>
+        <ul class='navUl'>
+          <li>
+            <NavLink exact to="/" class="navbarItem">Home</NavLink>
+            {isLoaded && sessionLinks}
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }
 
