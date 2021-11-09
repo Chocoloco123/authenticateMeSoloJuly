@@ -1,0 +1,16 @@
+.navbarItem {
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+  
+}
+
+.navbarItem:hover {
+  color: red;
+  background: yellow
+}
+
+.navUl{
+  list-style-type: none;
+  background-color: aquamarine;
+}

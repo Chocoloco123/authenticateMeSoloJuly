@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 // import { IdyllicLogo } from '../../media/Green Arrows Environment Logo/5.png'
-import { IdyllicLogo } from '../../media/IdyllicLogos/IdyllicLogo.png'
+import IdyllicLogo from '../../media/IdyllicLogos/IdyllicLogo.png'
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -29,8 +29,8 @@ function LoginFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/>
       <h1>Login</h1>
-      <img src={IdyllicLogo} alt="Idyllic logo"/>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
