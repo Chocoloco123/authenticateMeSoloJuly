@@ -29,7 +29,7 @@ function LoginFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div class='formContainer'>
+      <div className='formContainer'>
 
         {/* <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/> */}
         <h1>Login</h1>
@@ -43,7 +43,7 @@ function LoginFormPage() {
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
-            class='authInputs'
+            className='authInputs'
           />
         </label>
         <label>
@@ -53,11 +53,11 @@ function LoginFormPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            class='authInputs'
+            className='authInputs'
           />
         </label>
-        <div class='signupLoginBtn'>
-          <button type="submit" class='signupLoginSubmit'>Log In</button>
+        <div className='signupLoginBtn'>
+          <button type="submit" className='signupLoginSubmit'>Log In</button>
         </div>
       </div>
     </form>

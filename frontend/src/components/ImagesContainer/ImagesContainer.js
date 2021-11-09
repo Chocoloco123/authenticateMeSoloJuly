@@ -24,11 +24,11 @@ const ImagesContainer = () => {
     dispatch(getImages()); 
   }, [dispatch]);
 
-  return (null
-    // <div>
-    //   <body>
-    //     {images.map}
-    //   </body>
-    // </div>
+  return (
+    <div>
+      <ul>
+        {images.map((image) => <li key={image.imageUrl} image={image.imageUrl}></li>)}
+      </ul>
+    </div>
   );
 };

@@ -16,19 +16,19 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login" class="navbarItem">Log In</NavLink>
-        <NavLink to="/signup" class="navbarItem">Sign Up</NavLink>
+        <NavLink to="/login" className="navbarItem">Log In</NavLink>
+        <NavLink to="/signup" className="navbarItem">Sign Up</NavLink>
       </>
     );
   }
 
   return (
-    <div class='boxAroundNav'>
-      <div class='navDiv'>
-        <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/>
-        <ul class='navUl'>
+    <div className='boxAroundNav'>
+      <div className='navDiv'>
+        <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
+        <ul className='navUl'>
           <li>
-            <NavLink exact to="/" class="navbarItem">Home</NavLink>
+            <NavLink exact to="/" className="navbarItem">Home</NavLink>
             {isLoaded && sessionLinks}
           </li>
         </ul>
