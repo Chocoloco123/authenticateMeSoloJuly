@@ -32,3 +32,5 @@ const ImagesContainer = () => {
     </div>
   );
 };
+
+export default ImagesContainer;
