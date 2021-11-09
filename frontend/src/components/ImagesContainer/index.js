@@ -6,6 +6,7 @@
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
+// import image from '../../../../backend/db/models/image';
 
 
 // Import the thunk creator
@@ -29,10 +30,8 @@ const ImagesContainer = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <ul>
-        {images.map((image) => <li key={image.imageUrl} image={image.imageUrl}></li>)}
-      </ul>
+    <div className='imgCont'>
+      {images.map((image) => <img key={image.imageUrl} src={image.imageUrl} alt={image.imageTitle} className='homeImages'></img>)}
     </div>
   );
 };
