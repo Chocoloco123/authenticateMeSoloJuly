@@ -93,20 +93,17 @@ h1 {
   margin-bottom: 10px;
 }
 
-.signupLoginBtn:hover {
-  color: red;
-  
-}
-
 .signupLoginSubmit {
+  color: black;
   border: none;
   border-radius: 4px;
   padding: 6px;
-  box-shadow: 2px 2px 2px green;
+  box-shadow: 2px 2px 2px darkgreen;
+  /* box-shadow: 0px 0px 5px 2px darkgreen;  */
 }
 
 .signupLoginSubmit:hover {
-  color: darkgreen;
+  color: green;
   background: lightgray;
   box-shadow: none;
   transition: 0.2s all;
