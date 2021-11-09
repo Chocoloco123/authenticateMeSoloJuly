@@ -6,14 +6,10 @@
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-// import image from '../../../../backend/db/models/image';
-
+import { NavLink } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages } from '../../store/images';
-import styles from './ImagesContainer.module.css';
-// get images... not sure about this route
-// import { images } from '../../../../backend/db/models/'
 
 
 const ImagesContainer = () => {
@@ -30,8 +26,16 @@ const ImagesContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className='imgCont'>
-      {images.map((image) => <img key={image.imageUrl} src={image.imageUrl} alt={image.imageTitle} className='homeImages'></img>)}
+    <div>
+      <h1 class='pageName'>Home</h1>
+      {/* to image page */}
+      {/* <div>
+        {images.map((image) => )}
+        <NavLink to={`images/${}`}
+      </div> */}
+      <div className='imgCont'>
+        {images.map((image) => <img key={image.imageUrl} src={image.imageUrl} alt={image.imageTitle} className='homeImages'></img>)}
+      </div>
     </div>
   );
 };
