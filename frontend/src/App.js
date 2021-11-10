@@ -7,6 +7,7 @@ import ImagesContainer from "./components/ImagesContainer/";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SingleImgCont from "./components/ImagePage";
+import AddImage from "./components/AddImageContainer";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path='/images/:imageId'>
             <SingleImgCont />
+          </Route>
+          <Route exact path='/images/addImage'>
+            <AddImage />
           </Route>
         </Switch>
       )}

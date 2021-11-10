@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom';
-import { csrfFetch } from '../../store/csrf';
+
 
 // Import the thunk creator
-import { addImage } from '../../store/images';
+import { addImages } from '../../store/images';
 
 const AddImage = () => {
   const [userId, setUserId] = useState('');
@@ -27,7 +27,7 @@ const AddImage = () => {
       imageTitle,
       content
     };
-    dispatch(addImage(newImage));
+    dispatch(addImages(newImage));
 
     history.push('/');
   };
@@ -52,7 +52,7 @@ const AddImage = () => {
           placeholder='Description'
         />
         <button className='submit-button' type='submit'>
-          Add Image
+          Submit
         </button>
       </form>
     </div>
