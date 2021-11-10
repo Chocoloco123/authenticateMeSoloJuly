@@ -26,7 +26,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/'>
+          <Route path='/images'>
             <ImagesContainer />
           </Route>
           <Route path='/images/:imageId'>

@@ -33,6 +33,9 @@ const SingleImgCont = () => {
   }, [dispatch]);
   return (
     <div>
+      <div className='TitleName'>
+        <h1>{img?.imageTitle}</h1>
+      </div>
       <div className='singleImgContainer'>
         <img key={img?.imageUrl} 
         src={img?.imageUrl}

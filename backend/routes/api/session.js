@@ -73,5 +73,45 @@ router.get(
   }
 );
 
+// guest user
+// router.post(
+//   '/',
+//   validateLogin,
+//   asyncHandler(async (req, res, next) => {
+
+//     const password = "guestUser1!";
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     let guest = await User.findAll({
+//         where: {
+//             username: 'guest'
+//         }
+//     })
+
+//     if (!guest) {
+//         loginUser(req, res, guest[0]);
+//         return res.json();
+//     } else {
+
+
+//         await db.User.create({
+//             username: 'guest',
+//             firstName: 'Guest',
+//             lastName: 'User',
+//             emailAddress: 'guest@user.com',
+//             hashedPassword: hashedPassword
+//         })
+
+//         guest = await db.User.findAll({
+//             where: {
+//                 username: 'guest'
+//             }
+//         })
+//         loginUser(req, res, guest[0]);
+//         return res.redirect('/');
+//     }
+
+// }));
+
 
 module.exports = router;

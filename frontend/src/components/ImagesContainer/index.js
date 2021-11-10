@@ -27,7 +27,7 @@ const ImagesContainer = () => {
 
   return (
     <div>
-      <h1 class='pageName'>Home</h1>
+      <h1 class='pageName'>Image Feed</h1>
       {/* to image page */}
       {/* <div>
         {images.map((image) => )}
