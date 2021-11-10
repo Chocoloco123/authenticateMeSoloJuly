@@ -18,6 +18,18 @@ router.get('/', asyncHandler(async(req, res) => {
   res.json(images);
 }));
 
+// GET clicked image 
+// router.get('/:id(\\d+)', asyncHandler(async(req,res) => {
+//   const imageId = parseInt(req.params.id, 10);
+//   const selectedImg = await Image.findByPk(imageId);
+//   return res.json(selectedImg);
+// }))
+
+// router.get('/:id', asyncHandler(async function(req, res) {
+//   const pokemon = await PokemonRepository.one(req.params.id);
+//   return res.json(pokemon);
+// }));
+
 
 
 module.exports = router;

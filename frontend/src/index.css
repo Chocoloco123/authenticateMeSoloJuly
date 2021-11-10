@@ -115,6 +115,7 @@ h1 {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-auto-rows: 240px;
+  margin: 10px;
 }
 .homeImages {
   display: flex;
@@ -131,10 +132,11 @@ h1 {
   transition: all 300ms;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
   /* margin:5px; */
 }
 
 .homeImages:hover {
-  filter: grayscale(80%);
+  /* filter: grayscale(80%); */
   padding: 2px;
 }

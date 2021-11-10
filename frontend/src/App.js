@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import ImagesContainer from "./components/ImagesContainer/";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SingleImgCont from "./components/ImagePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,13 +26,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/'>
+          <Route exact path='/'>
             <ImagesContainer />
+          </Route>
+          <Route path='/:id'>
+            <SingleImgCont />
           </Route>
         </Switch>
       )}
     </>
   );
+
 }
 
 export default App;
