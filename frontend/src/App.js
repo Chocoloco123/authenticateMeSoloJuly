@@ -27,14 +27,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/images'>
+          <Route exact path='/images/addImage'>
+            <AddImage />
+          </Route>
+          <Route exact path='/'>
             <ImagesContainer />
           </Route>
           <Route path='/images/:imageId'>
             <SingleImgCont />
-          </Route>
-          <Route exact path='/images/addImage'>
-            <AddImage />
           </Route>
         </Switch>
       )}

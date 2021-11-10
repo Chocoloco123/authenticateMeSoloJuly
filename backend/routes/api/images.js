@@ -43,7 +43,7 @@ router.post('/',
       imageTitle, 
       content  
     });
-
+    console.log(newImage);
     return res.json({ newImage });
   })
 );

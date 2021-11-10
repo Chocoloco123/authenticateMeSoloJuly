@@ -32,6 +32,7 @@ export const addImages = (image) => async (dispatch) => {
   if (res.ok) {
     const imgData = await res.json();
     dispatch(addOneImage(imgData.image));
+    console.log(imgData)
   }
 }
 

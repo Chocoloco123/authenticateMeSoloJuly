@@ -33,6 +33,7 @@ const ImagesContainer = () => {
         {images.map((image) => )}
         <NavLink to={`images/${}`}
       </div> */}
+      <button className='add-Image-Btn' type='button'>Add Image</button>
       <div className='imgCont'>
         {images.map((image) => 
         <NavLink to={`/images/${image.id}`}>

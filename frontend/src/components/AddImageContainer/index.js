@@ -28,7 +28,7 @@ const AddImage = () => {
       content
     };
     dispatch(addImages(newImage));
-
+    // take the user back to home
     history.push('/');
   };
 
