@@ -18,22 +18,28 @@ const SingleImgCont = ({ imageId }) => {
   console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
   // const myImage = imagesObj.find((id) => id === imagesObj.id)
+
+  // THIS ONE!
   const img = images.find((id) => images.id === imageId);
+
+  // const img = imagesObj.find((id) => id === imagesObj.id);
+  // console.log(img);
+
   // const img = images.find((id) => id == imageId);
-  console.log('imageId: ', imageId);
-  console.log('image: ',img);
+  // console.log('imageId: ', imageId);
+  // console.log('image: ',img);
+
+
+
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
   return (
-    // {oneImg.findOne((imageId))}
     // <div>
-    //   <NavLink to={`/images/${img}`}>
-    //     <img key={img.imageUrl} 
-    //         src={img.imageUrl} 
-    //         alt={img.imageTitle} 
-    //         className='homeImages'></img>
-    //   </NavLink>
+    //   <img key={img.imageUrl} 
+    //   src={img.imageUrl}
+    //   alt={img.imageTitle} className='singleImg'
+    //   ></img>
     // </div>
     <div>
       <img key={img.imageUrl} 
