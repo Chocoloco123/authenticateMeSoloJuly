@@ -29,7 +29,7 @@ function App() {
           <Route exact path='/'>
             <ImagesContainer />
           </Route>
-          <Route path='/:id'>
+          <Route path='/images/:imageId'>
             <SingleImgCont />
           </Route>
         </Switch>
