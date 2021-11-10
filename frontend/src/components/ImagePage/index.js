@@ -22,8 +22,15 @@ const SingleImgCont = ({ imageId }) => {
   // THIS ONE!
   const img = images.find((id) => images.id === imageId);
 
+  // const newimg = images.find((id) => {
+  //   console.log(typeof id, id);
+  //   console.log(typeof imageId)
+  // })
+  // return newimg;
+  console.log('typeof id: ',typeof id);
+  console.log('typeof imageId: ', typeof imageId);
   // const img = imagesObj.find((id) => id === imagesObj.id);
-  // console.log(img);
+  console.log('img: ', img);
 
   // const img = images.find((id) => id == imageId);
   // console.log('imageId: ', imageId);
@@ -42,10 +49,12 @@ const SingleImgCont = ({ imageId }) => {
     //   ></img>
     // </div>
     <div>
-      <img key={img.imageUrl} 
-      src={img.imageUrl}
-      alt={img.imageTitle} className='singleImg'
-      ></img>
+      <div className='singleImgContainer'>
+        <img key={img.imageUrl} 
+        src={img.imageUrl}
+        alt={img.imageTitle} className='singleImg'
+        ></img>
+      </div>
     </div>
   )
 }

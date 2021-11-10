@@ -3,7 +3,9 @@
 .navDiv {
   display: flex;
   text-decoration: none;
-  background-color: darkseagreen
+  /* background-color: darkseagreen; */
+  background-color: darkslategray;
+  border-bottom: solid #000000;
 }
 
 a {
@@ -145,4 +147,11 @@ h1 {
 .singleImg {
   width: 75%;
   /* height: 200px; */
+  box-shadow: 0 0 5px #000000;
+}
+
+.singleImgContainer {
+  display: flex;
+  justify-content: center;
+  margin: 10%;
 }
