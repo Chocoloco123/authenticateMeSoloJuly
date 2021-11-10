@@ -38,7 +38,7 @@ const SingleImgCont = ({ imageId }) => {
     <div>
       <img key={img.imageUrl} 
       src={img.imageUrl}
-      alt={img.imageTitle}
+      alt={img.imageTitle} className='singleImg'
       ></img>
     </div>
   )
