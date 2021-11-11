@@ -11,7 +11,7 @@ const loadImages = (images) => ({
 
 const addOneImage = (image) => ({
   type: ADD_IMAGE,
-  image
+  image,
 })
 
 // 4) Define thunk creator 
@@ -22,16 +22,19 @@ export const getImages = () => async(dispatch) => {
   return images;
 }
 
-export const addImages = (image) => async (dispatch) => {
+export const addImages = (image) => async(dispatch) => {
   const res = await csrfFetch('/api/images', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(image),
   });
-
+  // const data = await res.json()
+  // console.log('------> ',data); // this works
   if (res.ok) {
     const imgData = await res.json();
-    dispatch(addOneImage(imgData.image));
+    console.log('=======> ', imgData.newImage);
+    // dispatch(addOneImage(imgData.image));
+    dispatch(addOneImage(imgData.newImage));
     console.log(imgData)
   }
 }
@@ -54,8 +57,12 @@ const imagesReducer = (state = initialState, action) => {
       });
       return newState;
     case ADD_IMAGE:
-      newState = { ...state, [action.image.id]: action.imag };
-      console.log(action);
+      console.log('action before: ', action.image);
+      // ! after this action before it doesn't work
+      console.log('action.newImage: ', action.image);
+      // newState = { ...state, [action.image.id]: action.image };
+      newState = { ...state, [action.image.id]: action.image };
+      console.log('action after: ', action.newImage);
       return newState;
     // setup default case, otherwise the reducer won't be happy
     default:
