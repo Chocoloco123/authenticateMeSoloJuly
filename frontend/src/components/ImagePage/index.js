@@ -29,8 +29,8 @@ const SingleImgCont = () => {
 
   // console.log('img: ', img);
 
-  console.log(sessionUser, sessionUser.id);
-  console.log(img, img?.userId)
+  // console.log(sessionUser, sessionUser.id);
+  // console.log(img, img?.userId)
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
