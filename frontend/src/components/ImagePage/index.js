@@ -36,6 +36,9 @@ const SingleImgCont = () => {
   }, [dispatch]);
   return (
     <div>
+      <div className='backBtnPhotoCont'>
+        <NavLink to={`/home`} class='backBtnPhoto' >Back</NavLink>
+      </div>
       <div className='TitleName'>
         <h1 className='titles'>{img?.imageTitle}</h1>
       </div>

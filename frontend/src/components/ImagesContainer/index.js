@@ -34,7 +34,7 @@ const ImagesContainer = () => {
     <div>
       <h1 className='pageName titles'>Image Feed</h1>
       { sessionUser && 
-        <NavLink exact to="/images/addImage" className="add-img-link">Add Image</NavLink>
+        <NavLink exact to="/images/addImage" className="add-img-link image-btn">Add Image</NavLink>
       }
       <div className='imgCont'>
         {images.map((image) => 

@@ -109,7 +109,7 @@ body {
 } */
 
 .titles {
-  margin: 10px;
+  margin-left: 10%;
 }
 
 .authInputs {
@@ -136,7 +136,7 @@ body {
   transition: 0.2s all;
 }
 
-/* home page */
+/* home page/feed */
 .imgCont {
   display: grid;
   gap: 1rem;
@@ -168,6 +168,7 @@ body {
   padding: 2px;
 }
 
+
 /* single photo page */
 .singleImg {
   width: 65%;
@@ -190,12 +191,17 @@ body {
 }
 
 /* add image */
-
+/* 
 .add-img-link {
   background-color: darkgray;
   border-radius: 3px;
   margin: 15px;
+  text-decoration: none;
 }
+
+.add-img-link:visited {
+  color: black;
+} */
 
 
 /* edit image */

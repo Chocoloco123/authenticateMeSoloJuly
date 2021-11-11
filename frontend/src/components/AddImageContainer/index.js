@@ -34,26 +34,32 @@ const AddImage = () => {
 
   return (
     <div className='add-image'>
-      <h3>Add An Image</h3>
-      <form onSubmit={handleSubmit} className='add-image'>
+      <div className='backBtnPhotoCont'>
+        <NavLink to={`/home`} class='backBtnPhoto' >Back</NavLink>
+      </div>
+      <h3 className='titles'>Add An Image</h3>
+      <form onSubmit={handleSubmit} className='add-image editImgFormContainer'>
+        <label for='imageUrl' className='editImgLabel'>Image Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}
           value={imageUrl}
           placeholder='Image Url'
         />
+        <label for='imageTitle' className='editImgLabel'>Image Title</label>
         <input
           onChange={(e) => setImageTitle(e.target.value)}
           value={imageTitle}
           placeholder='Image Title'
         />
+        <label for='description' className='editImgLabel'>Description</label>
         <input
           onChange={(e) => setContent(e.target.value)}
           value={content}
           placeholder='Description'
         />
-        <button className='submit-button' type='submit'>
-          Submit
-        </button>
+        <div className='imageBtnsBox'>
+          <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
+        </div>
       </form>
     </div>
   );
