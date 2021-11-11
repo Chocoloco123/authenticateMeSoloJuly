@@ -32,7 +32,7 @@ function LoginFormPage() {
       <div className='formContainer'>
 
         {/* <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/> */}
-        <h1>Login</h1>
+        <h1 className='titles'>Login</h1>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>

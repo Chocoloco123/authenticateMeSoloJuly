@@ -34,10 +34,7 @@ const SingleImgCont = () => {
   return (
     <div>
       <div className='TitleName'>
-        <h1>{img?.imageTitle}</h1>
-      </div>
-      <div>
-        <NavLink to={`/images/${img?.id}/edit`}>Edit Image</NavLink>
+        <h1 className='titles'>{img?.imageTitle}</h1>
       </div>
       <div className='singleImgContainer'>
         <img key={img?.imageUrl} 
@@ -45,6 +42,14 @@ const SingleImgCont = () => {
         alt={img?.imageTitle} className='singleImg'
         ></img>
       </div>
+      <div className='imageBtnsBox'>
+        <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Edit Image</NavLink>
+        {/* button for delete goes here */}
+      </div>
+      {/* <div className='descriptionBox'>
+        <label for='description' className='descriptionTxt'>Description</label>
+        <textarea className='descriptionTxtArea'></textarea>
+      </div> */}
     </div>
   )
 }

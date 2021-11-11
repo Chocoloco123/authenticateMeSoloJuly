@@ -45,12 +45,16 @@ const EditImage = () => {
   }, [dispatch, images?.length])
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <h1>The Edit Image Page</h1>
-      <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}
-      placeholder='Title'></input>
-      <input onChange={e => setContent(e.target.value)} value={content} placeholder='Description'></input>
-      <button type='submit'>Submit</button>
+    <form onSubmit={(e) => handleSubmit(e)} className='editImgFormContainer'>
+      <h1 className='titles'>Edit Image</h1>
+      <label for='Title' className='labels editImgLabel'>Title</label>
+        <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}
+        placeholder='Title'></input>
+      <label for='Description' className='labels editImgLabel'>Description</label>
+        <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
+      <div className='imageBtnsBox'>
+        <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
+      </div>
     </form>
   );
 };

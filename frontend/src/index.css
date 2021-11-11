@@ -1,5 +1,10 @@
 /* TODO Add site wide styles */
 
+/* user icon */
+/* .fa-user::before {
+  border-radius: 100% !important;
+} */
+
 .navDiv {
   display: flex;
   text-decoration: none;
@@ -99,7 +104,11 @@ body {
 }
 
 /* Signup & Login forms */
-h1 {
+/* h1 {
+  margin: 10px;
+} */
+
+.titles {
   margin: 10px;
 }
 
@@ -169,7 +178,9 @@ h1 {
 .singleImgContainer {
   display: flex;
   justify-content: center;
-  margin: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
 }
 
 /* add image */
@@ -178,4 +189,56 @@ h1 {
   background-color: darkgray;
   border-radius: 3px;
   margin: 15px;
+}
+
+
+/* edit image */
+.editImgFormContainer {
+  display: flex;
+  flex-direction: column;
+  /* margin: 10px 10px; */
+  margin: 40px 25% 10%;
+  box-shadow: 0px 0px 5px 2px lightgrey;
+  padding: 10px;
+  overflow-y: hidden;
+  /* border: solid; */
+  border-radius: 5px;
+}
+
+
+
+.image-btn {
+  text-decoration: none;
+  color: black;
+  background-color: lightgray;
+  padding: 3px;
+  margin: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px #000000;
+  font-size: 12px;
+}
+
+.image-btn:hover {
+  color: darkgreen;
+}
+
+.imageBtnsBox {
+  display: flex;
+  justify-content: center;
+}
+
+.editImgLabel {
+  margin: 5px 0;
+}
+
+.descriptionTxtArea {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.editSubmit {
+  margin: 10px;
+}
+
+.submitEditBtn {
+  border-width: 0;
 }

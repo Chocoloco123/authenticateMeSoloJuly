@@ -32,7 +32,7 @@ const ImagesContainer = () => {
 
   return (
     <div>
-      <h1 className='pageName'>Image Feed</h1>
+      <h1 className='pageName titles'>Image Feed</h1>
       { sessionUser && 
         <NavLink exact to="/images/addImage" className="add-img-link">Add Image</NavLink>
       }
