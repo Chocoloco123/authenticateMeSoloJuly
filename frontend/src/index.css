@@ -8,7 +8,7 @@
   border-bottom: solid #000000;
 }
 
-a {
+/* a {
   text-decoration: none;
   padding: 5px;
   font-size: 20px;
@@ -19,8 +19,6 @@ a.active {
 }
 a.active:hover {
   color: gray;
-  /* background: lightgoldenrodyellow; */
-  /* margin: 5px; */
   text-decoration: none;
   border-radius: 3px;
 }
@@ -33,15 +31,12 @@ a:visited {
 
 a:visited:hover {
   color: gray;
-  /* background: lightgoldenrodyellow; */
-  /* margin: 5px; */
   text-decoration: none;
   border-radius: 3px;
-}
+} */
 
 .navbarItem:hover {
   color: black;
-  /* background: lightgoldenrodyellow; */
   margin: 5px;
   text-decoration: none;
   border-radius: 3px;
@@ -52,6 +47,13 @@ a:visited:hover {
   color: white;
   margin: 5px;
 }
+
+/* to make css rule more important than another that has control over it */
+/* .navbarItem {
+  text-decoration: none;
+  color: white !important;
+  margin: 5px;
+} */
 
 .navUl{
   display: flex;

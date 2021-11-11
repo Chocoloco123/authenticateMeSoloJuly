@@ -36,6 +36,9 @@ const SingleImgCont = () => {
       <div className='TitleName'>
         <h1>{img?.imageTitle}</h1>
       </div>
+      <div>
+        <NavLink to={`/images/${img?.id}/edit`}>Edit Image</NavLink>
+      </div>
       <div className='singleImgContainer'>
         <img key={img?.imageUrl} 
         src={img?.imageUrl}

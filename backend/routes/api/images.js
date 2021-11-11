@@ -20,6 +20,11 @@ const validateImage = [
     .notEmpty(),
 ];
 
+const validateEditedImage = [
+  check('imageTitle')
+    .notEmpty(),
+];
+
 
 // GET all images  
 router.get('/', asyncHandler(async(req, res) => {
@@ -30,7 +35,7 @@ router.get('/', asyncHandler(async(req, res) => {
 }));
 
 // POST new image
-router.post('/',
+router.post('/newImage',
   validateImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
@@ -44,6 +49,29 @@ router.post('/',
     });
     console.log('theNewImage: ', newImage);
     return res.json({ newImage });
+  })
+);
+
+// PUT edit image 
+router.patch('/:imageId(\\d+)/edit',
+  validateEditedImage, 
+  requireAuth,
+  asyncHandler(async(req, res) => {
+    const { imageTitle, content } = req.body;
+  
+    const { imageId } = req.params;
+    
+    const image = await Image.findByPk(imageId);
+    
+    // const { imageUrl, imageTitle, content } = req.body;
+    await image.update({ 
+      imageTitle, 
+      content  
+    });
+    
+    const updatedImg = await Image.findByPk(imageId);
+
+    return res.json({ updatedImg });
   })
 );
 
