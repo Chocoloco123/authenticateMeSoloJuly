@@ -27,7 +27,7 @@ const SingleImgCont = () => {
   
   // console.log('typeof imageId: ', typeof imageId);
 
-  // console.log('img: ', img);
+  console.log('img: ', img);
 
   // console.log(sessionUser, sessionUser.id);
   // console.log(img, img?.userId)
@@ -51,10 +51,14 @@ const SingleImgCont = () => {
         }
         {/* button for delete goes here */}
       </div>
-      {/* <div className='descriptionBox'>
+      <div className='descriptionBox'>
         <label for='description' className='descriptionTxt'>Description</label>
-        <textarea className='descriptionTxtArea'></textarea>
-      </div> */}
+        <div className='descriptionContBox'>
+          <p>
+            {img?.content}
+          </p>
+        </div>
+      </div> 
     </div>
   )
 }
