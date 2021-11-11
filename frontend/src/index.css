@@ -5,6 +5,16 @@
   border-radius: 100% !important;
 } */
 
+.loginErrors {
+  /* list-style-type: none; */
+  color: red;
+}
+
+.loginErrorList {
+  padding-left: 0;
+}
+
+
 .navDiv {
   display: flex;
   text-decoration: none;
@@ -110,6 +120,16 @@ body {
 
 .titles {
   margin-left: 10%;
+}
+/* login h1 */
+.login {
+  margin-left: 0;
+  /* text-decoration: underline; */
+}
+
+.loginTitleDiv {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .authInputs {
