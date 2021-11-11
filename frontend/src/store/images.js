@@ -55,6 +55,7 @@ const imagesReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGE:
       newState = { ...state, [action.image.id]: action.imag };
+      console.log(action);
       return newState;
     // setup default case, otherwise the reducer won't be happy
     default:
