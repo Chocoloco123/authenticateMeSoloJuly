@@ -46,6 +46,13 @@ const EditImage = () => {
   // }, [dispatch, images?.length])
   }, [dispatch, img?.content])
 
+  useEffect(() => {
+    if (img) {
+      setImageTitle(img.imageTitle);
+      setContent(img.content);
+    }
+  }, [img])
+
   return (
     <div>
       <div className='backBtnPhotoCont'>

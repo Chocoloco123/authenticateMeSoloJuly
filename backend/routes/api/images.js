@@ -83,9 +83,9 @@ router.delete('/:imageId(\\d+)/delete',
   const image = await Image.findByPk(imageId);
   // if (!image) throw new Error('Cannot find item.');
     console.log('.........> ', image);
-  await Image.destroy({ where: { imageId: image.id}})
+  await Image.destroy({ where: { id: image.id}})
   // await Image.destroy();
-  res.status(204).end();
+  res.status(204);
   return res.json({ image });
 }))
 
