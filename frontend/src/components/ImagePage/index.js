@@ -62,7 +62,9 @@ const SingleImgCont = () => {
           <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Update</NavLink> 
         }
         {/* button for delete goes here */}
+        {sessionUser && sessionUser.id === img?.userId &&
         <button onClick={() => handleDelete(img?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
+        }
       </div>
       <div className='descriptionBox'>
         <label for='description' className='descriptionTxt'>Description</label>
