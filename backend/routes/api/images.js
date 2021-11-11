@@ -34,8 +34,8 @@ router.post('/',
   validateImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
-    // const { userId, albumId, imageUrl, imageTitle } = req.body;
-    const { imageUrl, imageTitle, content } = req.body;
+    const { userId, albumId, imageUrl, imageTitle, content } = req.body;
+    // const { imageUrl, imageTitle, content } = req.body;
     const newImage = await Image.create({ 
       userId,
       albumId,

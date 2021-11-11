@@ -30,7 +30,7 @@ function App() {
           <Route exact path='/images/addImage'>
             <AddImage />
           </Route>
-          <Route exact path='/'>
+          <Route exact path='/home'>
             <ImagesContainer />
           </Route>
           <Route path='/images/:imageId'>

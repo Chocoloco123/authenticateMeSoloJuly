@@ -33,7 +33,8 @@ const ImagesContainer = () => {
         {images.map((image) => )}
         <NavLink to={`images/${}`}
       </div> */}
-      <button className='add-Image-Btn' type='button'>Add Image</button>
+      {/* <button className='add-Image-Btn' type='button'>Add Image</button> */}
+      <NavLink exact to="/images/addImage" className="add-img-link">Add Image</NavLink>
       <div className='imgCont'>
         {images.map((image) => 
         <NavLink to={`/images/${image.id}`}>

@@ -28,7 +28,7 @@ function Navigation({ isLoaded }){
         <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
         <ul className='navUl'>
           <li>
-            <NavLink exact to="/" className="navbarItem">Home</NavLink>
+            <NavLink exact to="/home" className="navbarItem">Home</NavLink>
             {isLoaded && sessionLinks}
           </li>
         </ul>

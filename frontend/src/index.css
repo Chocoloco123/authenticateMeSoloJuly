@@ -64,6 +64,20 @@ a:visited:hover {
   /* background-color: darkseagreen */
 }
 
+.profile-dropdown {
+  overflow-y: hidden;
+  text-decoration: none;
+  list-style-type: none;
+  background-color: gray;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+/* .profileDropdownBox {
+  background-color: gray;
+} */
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -154,4 +168,12 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 10%;
+}
+
+/* add image */
+
+.add-img-link {
+  background-color: darkgray;
+  border-radius: 3px;
+  margin: 15px;
 }
