@@ -225,6 +225,7 @@ body {
 .imageBtnsBox {
   display: flex;
   justify-content: center;
+  margin-bottom: 10%;
 }
 
 .editImgLabel {
@@ -241,4 +242,24 @@ body {
 
 .submitEditBtn {
   border-width: 0;
+}
+
+.backBtnPhotoCont {
+  margin: 20px;
+}
+
+.backBtnPhoto {
+  text-decoration: none;
+  color: black;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.backBtnPhoto:visited {
+  color: darkgray;
+}
+
+.backBtnPhoto:hover {
+  color: gray;
+  box-shadow: 0 0 3px #000000;
 }

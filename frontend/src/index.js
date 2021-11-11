@@ -7,6 +7,7 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
+import { EditFormProvider } from './Context/EditFormContext';
 
 const store = configureStore();
 
@@ -27,6 +28,26 @@ function Root() {
     </ReduxProvider>
   );
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// To experiment with to get edit image to pre-populate ... later
+// function Root() {
+//   return (
+//     <ReduxProvider store={store}>
+//       <BrowserRouter>
+//         <EditFormProvider>
+//           <App />
+//         </EditFormProvider>
+//       </BrowserRouter>
+//     </ReduxProvider>
+//   );
+// }
 
 ReactDOM.render(
   <React.StrictMode>
