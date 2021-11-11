@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
-      references: { model: 'Albums' }
+      references: { model: 'Albums' },
+      allowNull: true,
     },
     imageUrl: {
       type: DataTypes.STRING,

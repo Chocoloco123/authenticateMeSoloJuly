@@ -37,13 +37,12 @@ router.post('/',
     const { userId, albumId, imageUrl, imageTitle, content } = req.body;
     // const { imageUrl, imageTitle, content } = req.body;
     const newImage = await Image.create({ 
-      userId,
-      albumId,
+      userId: req.user.id,
       imageUrl, 
       imageTitle, 
       content  
     });
-    console.log(newImage);
+    console.log('theNewImage: ', newImage);
     return res.json({ newImage });
   })
 );
