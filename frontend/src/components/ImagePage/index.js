@@ -14,6 +14,8 @@ const SingleImgCont = () => {
   const dispatch = useDispatch();
   // get image from our store
   const imagesObj = useSelector((state) => state.images); 
+  // get session user
+  const sessionUser = useSelector((state) => state.session.user); // get session user
   
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
@@ -27,7 +29,8 @@ const SingleImgCont = () => {
 
   // console.log('img: ', img);
 
-
+  console.log(sessionUser, sessionUser.id);
+  console.log(img, img?.userId)
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
@@ -43,7 +46,9 @@ const SingleImgCont = () => {
         ></img>
       </div>
       <div className='imageBtnsBox'>
-        <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Edit Image</NavLink>
+        {sessionUser && sessionUser.id === img?.userId &&
+          <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Edit Image</NavLink> 
+        }
         {/* button for delete goes here */}
       </div>
       {/* <div className='descriptionBox'>
