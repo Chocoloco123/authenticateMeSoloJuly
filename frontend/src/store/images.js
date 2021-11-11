@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 const LOAD_IMAGES = 'images/LOAD_IMAGES'
 const ADD_IMAGE = 'images/ADD_IMAGE'
 const EDIT_IMAGE = 'images/EDIT_IMAGE'
+const DELETE_IMAGE = 'images/DELETE_IMAGE'
 
 // 5) Define action creators
 const loadImages = (images) => ({
@@ -14,10 +15,15 @@ const loadImages = (images) => ({
 const addOneImage = (image) => ({
   type: ADD_IMAGE,
   image,
-})
+});
 
 const editOneImage = (image) => ({
   type: EDIT_IMAGE,
+  image
+});
+
+const deleteAnImage = (image) => ({
+  type: DELETE_IMAGE,
   image
 })
 
@@ -62,6 +68,16 @@ export const editImage = (imageId, imgData) => async(dispatch) => {
   }
 }
 
+export const deleteImage = (imageId) => async(dispatch) => {
+  const res = await csrfFetch(`/api/images/${imageId}/delete`, {
+    method: 'DELETE',
+  });
+
+  if (res.ok) {
+    dispatch(deleteAnImage(imageId));
+  }
+}
+
 // 2) Define an initial state
 const initialState = {};
 // 1). Define a reducer
@@ -90,6 +106,10 @@ const imagesReducer = (state = initialState, action) => {
       // origin image id key = updated image data 
       state[action.image.id] = action.image;
       newState = { ...state };
+      return newState;
+    case DELETE_IMAGE:
+      newState = { ...state };
+      delete newState[action.image];
       return newState;
     // setup default case, otherwise the reducer won't be happy
     default:

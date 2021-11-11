@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom';
 
 // Import the thunk creator
-import { getImages } from '../../store/images';
+import { getImages, deleteImage } from '../../store/images';
 
 const SingleImgCont = () => {
   const params = useParams();
@@ -31,8 +31,15 @@ const SingleImgCont = () => {
 
   // console.log(sessionUser, sessionUser.id);
   // console.log(img, img?.userId)
+
+  const handleDelete = (imageId) => {
+    dispatch(deleteImage(imageId))
+  }
+
   useEffect(() => {
     dispatch(getImages());
+    // dispatch(deleteImage(img.id))
+  // }, [dispatch, img?.id]);
   }, [dispatch]);
   return (
     <div>
@@ -50,9 +57,10 @@ const SingleImgCont = () => {
       </div>
       <div className='imageBtnsBox'>
         {sessionUser && sessionUser.id === img?.userId &&
-          <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Edit Image</NavLink> 
+          <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Update</NavLink> 
         }
         {/* button for delete goes here */}
+        <button onClick={() => handleDelete(img?.id)} className='deleteBtn'>Delete</button>
       </div>
       <div className='descriptionBox'>
         <label for='description' className='descriptionTxt'>Description</label>

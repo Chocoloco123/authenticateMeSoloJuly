@@ -52,7 +52,7 @@ router.post('/newImage',
   })
 );
 
-// PUT edit image 
+// PATCH edit image 
 router.patch('/:imageId(\\d+)/edit',
   validateEditedImage, 
   requireAuth,
@@ -75,6 +75,19 @@ router.patch('/:imageId(\\d+)/edit',
   })
 );
 
+router.delete('/:imageId(\\d+)/delete', 
+  requireAuth,
+  asyncHandler(async(req, res) => {
+  const { imageId } = req.params;
+
+  const image = await Image.findByPk(imageId);
+  // if (!image) throw new Error('Cannot find item.');
+    console.log('.........> ', image);
+  await Image.destroy({ where: { imageId: image.id}})
+  // await Image.destroy();
+  res.status(204).end();
+  return res.json({ image });
+}))
 
 
 module.exports = router;
