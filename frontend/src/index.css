@@ -5,7 +5,7 @@
   border-radius: 100% !important;
 } */
 /* Landing Page */
-.imgCont {
+.frontImgCont {
   margin: 0 !important;
   border: 0;
 }
@@ -14,13 +14,8 @@
   position: relative;
   text-align: center;
   color: white;
-  /* height: auto;
-  width: 100%; */
 }
 .frontImage {
-  /* position: fixed;
-  top: 93px;
-  left: 0; */
   min-height: 100%;
   max-width: 100%;
   opacity: 0.9;
@@ -187,6 +182,18 @@ body {
   box-shadow: none;
   transition: 0.2s all;
 }
+
+.signUpButtonFront {
+  color:gray;
+  padding: 5px;
+  background-color: white;
+  border-radius: 3px;
+  border: solid 1px darkgray;
+}
+
+/* .signUpButtonFront:hover{
+  color: gray;
+} */
 
 /* home page/feed */
 .imgCont {

@@ -32,11 +32,12 @@ const LandingContainer = () => {
 
   return (
     <div className='landingContainer'>
-      <div className='imgCont'>
+      <div className='frontImgCont'>
         <img src={naturePhoto} className='frontImage' alt='naturePhoto'/>
         <div className='centerImg'>
           <h1 className='pageName titles'>Find inspiration in nature.</h1>
           <h4 className='landingText' >Join the Idyllic community and share the beauty of nature.</h4>
+          <NavLink to="/signup" className="navbarItem signUpButtonFront">Sign Up</NavLink>
         </div>
       </div>
     </div>

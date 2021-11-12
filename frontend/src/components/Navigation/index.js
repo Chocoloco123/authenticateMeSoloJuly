@@ -17,7 +17,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <NavLink to="/login" className="navbarItem">Log In</NavLink>
-        <NavLink to="/signup" className="navbarItem">Sign Up</NavLink>
+        {/* <NavLink to="/signup" className="navbarItem">Sign Up</NavLink> */}
       </>
     );
   }
