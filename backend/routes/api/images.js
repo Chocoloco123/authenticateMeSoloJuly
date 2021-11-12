@@ -15,14 +15,23 @@ const router = express.Router();
 const validateImage = [
   check('imageUrl')
     .notEmpty()
+    .withMessage('Please provide a URL for your image.')
     .isURL({ require_protocol: false, require_host: false }),
   check('imageTitle')
-    .notEmpty(),
+    .notEmpty()
+    .withMessage('Please provide an image title'),
+  check('content')
+    .notEmpty()
+    .withMessage('Please provide a description.'),
 ];
 
 const validateEditedImage = [
   check('imageTitle')
-    .notEmpty(),
+    .notEmpty()
+    .withMessage('Please provide an image title'),
+  check('content')
+    .notEmpty()
+    .withMessage('Please provide a description.'),
 ];
 
 

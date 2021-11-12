@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom';
+import * as imageActions from '../../store/images';
 
 
 // Import the thunk creator
@@ -14,6 +15,7 @@ const AddImage = () => {
   const [albumId, setAlbumId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [imageTitle, setImageTitle] = useState('');
+  const [errors, setErrors] = useState([]);
   const [content, setContent] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
@@ -39,6 +41,9 @@ const AddImage = () => {
       </div>
       <h3 className='titles'>Add An Image</h3>
       <form onSubmit={handleSubmit} className='add-image editImgFormContainer'>
+        <ul className='loginErrorsList'>
+          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
+        </ul>
         <label for='imageUrl' className='editImgLabel'>Image Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}
