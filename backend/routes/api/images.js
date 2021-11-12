@@ -7,7 +7,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 // requiring a session user to be authenticated before accessing a route.
 const { Image } = require('../../db/models');
 //  must ust the models to get the associations
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 
 const router = express.Router();
@@ -15,15 +15,21 @@ const router = express.Router();
 const validateImage = [
   check('imageUrl')
     .notEmpty()
+    .withMessage('Please provide a Url.')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a URL for your image.')
-    .isURL({ require_protocol: false, require_host: false }),
+    .isURL({ require_protocol: false, require_host: false })
+    .withMessage('Please provide a valid Url.')
+    ,
   check('imageTitle')
     .notEmpty()
-    .withMessage('Please provide an image title'),
+    .withMessage('Please provide an image title')
+    .isLength({min:2, max: 150})
+    .withMessage('Please provide a title with a length between 2 - 150 characters.'),
   check('content')
     .notEmpty()
     .withMessage('Please provide a description.'),
+  handleValidationErrors,
 ];
 
 const validateEditedImage = [
@@ -33,6 +39,7 @@ const validateEditedImage = [
   check('content')
     .notEmpty()
     .withMessage('Please provide a description.'),
+  handleValidationErrors,
 ];
 
 
@@ -51,14 +58,32 @@ router.post('/newImage',
   asyncHandler(async(req, res) => {
     const { imageUrl, imageTitle, content } = req.body;
     // const { imageUrl, imageTitle, content } = req.body;
-    const newImage = await Image.create({ 
-      userId: req.user.id,
-      imageUrl, 
-      imageTitle, 
-      content  
-    });
-    console.log('theNewImage: ', newImage);
+    
+    const validationErrors = validationResult(req);
+
+    if (validationErrors.isEmpty()) {
+      const newImage = await Image.create({ 
+        userId: req.user.id,
+        imageUrl, 
+        imageTitle, 
+        content  
+      });
+
     return res.json({ newImage });
+    } else {
+      const errors = validationErrors.Array().map((err) => err.msg);
+      return res.json(errors);
+    }
+
+    // if (!user) {
+    //   const err = new Error('Login failed');
+    //   err.status = 401;
+    //   err.title = 'Login failed';
+    //   err.errors = ['The provided credentials were invalid.'];
+    //   return next(err);
+    // }
+    
+    // console.log('theNewImage: ', newImage);
   })
 );
 
@@ -74,14 +99,23 @@ router.patch('/:imageId(\\d+)/edit',
     const image = await Image.findByPk(imageId);
     
     // const { imageUrl, imageTitle, content } = req.body;
-    await image.update({ 
-      imageTitle, 
-      content  
-    });
-    
-    const updatedImg = await Image.findByPk(imageId);
 
-    return res.json({ updatedImg });
+    const validationErrors = validationResult(req);
+
+    if (validationErrors.isEmpty()) {
+      await image.update({ 
+        imageTitle, 
+        content  
+      });
+      
+      const updatedImg = await Image.findByPk(imageId);
+  
+      return res.json({ updatedImg });
+    } else {
+      const errors = validationErrors.Array().map((err) => err.msg);
+      return res.json(errors);
+    }
+
   })
 );
 

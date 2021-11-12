@@ -45,10 +45,11 @@ export const addImages = (image) => async(dispatch) => {
   // console.log('------> ',data); // this works
   if (res.ok) {
     const imgData = await res.json();
-    console.log('=======> ', imgData.newImage);
+    // console.log('=======> ', imgData.newImage);
     // dispatch(addOneImage(imgData.image));
     dispatch(addOneImage(imgData.newImage));
-    console.log(imgData)
+    // console.log(imgData)
+    return res;
   }
 }
 

@@ -43,35 +43,14 @@ const AddImage = () => {
       imageTitle,
       content
     };
-    return dispatch(imageActions.addImages({
-        userId,
-        albumId,
-        imageUrl,
-        imageTitle,
-        content
-      }))
-      .then(history.push('/home'))
+    return dispatch(imageActions.addImages(newImage))
+      .then((res) => {
+        if (res.ok) history.push('/home')
+      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       })
-    
-    // return dispatch(imageActions.addImages({
-    //     userId,
-    //     albumId,
-    //     imageUrl,
-    //     imageTitle,
-    //     content
-    //   })
-    //   .then(history.push('/home'))
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   })
-      
-    // );
-    // take the user back to home
-    // history.push('/home');
   };
 
 
