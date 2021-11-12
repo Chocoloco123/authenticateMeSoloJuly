@@ -31,8 +31,8 @@ const AddNewComment = () => {
     };
     return dispatch(commentActions.addAComment({
         userId,
-        // theImageId,
-        imageId,
+        theImageId,
+        // imageId,
         comment,
       }))
       .then(history.push(`/images/${imageId}`))
