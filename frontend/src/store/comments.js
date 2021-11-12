@@ -17,7 +17,7 @@ const addOneComment = (comment) => ({
 export const getPageComments = () => async(dispatch) => {
   const res = await fetch('/api/comments');
   const comments = await res.json();
-  console.log('storeComments: ', comments);
+  // console.log('storeComments: ', comments);
   dispatch(loadComments(comments));
   return comments;
 }
@@ -33,7 +33,8 @@ async(dispatch) => {
 
   if (res.ok) {
     const commentData = await res.json();
-    dispatch(addOneComment(commentData));
+    
+    dispatch(addOneComment(commentData.newComment));
   }
 }
 

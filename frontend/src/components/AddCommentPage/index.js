@@ -18,11 +18,13 @@ const AddNewComment = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  // console.log('sessionUser: ', sessionUser);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newComment = { // ! newComment
       // userId, // old
-      sessionUser,
+      userId: sessionUser.id, // new
       theImageId,
       // imageId,
       comment,
