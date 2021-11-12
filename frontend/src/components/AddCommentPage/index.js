@@ -24,23 +24,18 @@ const AddNewComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newComment = { // ! newComment
-      // userId, // old
-      userId: sessionUser.id, // new
-      // userId: req.user.id, // new
+    const newComment = { 
+      userId: sessionUser.id, 
       theImageId: imageId,
-      // imageId,
       comment,
     };
-    console.log('theImageId: ', newComment.theImageId); // this works!
+    
     return dispatch(commentActions.addAComment(imageId,{
         userId,
         theImageId,
-        // imageId,
         comment,
       }))
       .then(history.push(`/images/${imageId}`))
-      // .then(history.push(`/home`))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
