@@ -9,8 +9,26 @@ const { Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 
+const router = express.Router();
+
 const validateComment = [
   check('comment')
     .notEmpty()
     .withMessage('Please fill comment field.')
-]
+];
+
+router.get('/:imageId(\\d+)',
+asyncHandler(async(req, res) => {
+  const { imageId } = req.params;
+  const comments = await Comment.findAll();
+  const imageComments = await findAll({
+    where: {
+      id: imageId
+    }
+  });
+  res.json();
+})
+)
+
+
+module.exports = router;
