@@ -12,18 +12,18 @@ import naturePhoto from '../../media/images/pexels-pixabay-206359_agy77s.jpg'
 
 const LandingContainer = () => {
   // Declare variable from hooks
-  const dispatch = useDispatch();
-  // get images from our store
-  const imagesObj = useSelector((state) => state.images);
+  // const dispatch = useDispatch();
+  // // get images from our store
+  // const imagesObj = useSelector((state) => state.images);
   const sessionUser = useSelector((state) => state.session.user); // get session user
-  // console.log(sessionUser);
-  const images = Object.values(imagesObj);
+  // // console.log(sessionUser);
+  // const images = Object.values(imagesObj);
 
-  // Use a 'react' hook and cause a side effect
-  useEffect(() => {
-    // dispatches our thunk after the return part has been rendered for the first time
-    dispatch(getImages()); 
-  }, [dispatch]);
+  // // Use a 'react' hook and cause a side effect
+  // useEffect(() => {
+  //   // dispatches our thunk after the return part has been rendered for the first time
+  //   dispatch(getImages()); 
+  // }, [dispatch]);
 
   // ! use this for when you only want logged in user to access content
   if (sessionUser) return (
@@ -31,11 +31,13 @@ const LandingContainer = () => {
   );
 
   return (
-    <div>
-      <h1 className='pageName titles'>Find inspiration in nature.</h1>
-      <h3 className='landingText' >Join the Idyllic community and share the beauty of nature.</h3>
+    <div className='landingContainer'>
       <div className='imgCont'>
         <img src={naturePhoto} className='frontImage' alt='naturePhoto'/>
+        <div className='centerImg'>
+          <h1 className='pageName titles'>Find inspiration in nature.</h1>
+          <h4 className='landingText' >Join the Idyllic community and share the beauty of nature.</h4>
+        </div>
       </div>
     </div>
   );
