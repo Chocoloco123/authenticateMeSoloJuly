@@ -27,6 +27,16 @@ function LoginFormPage() {
       });
   }
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    setCredential('DemoUser');
+    setPassword('password');
+    dispatch(sessionActions.login({
+      credential, password
+    }))
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className='formContainer'>
@@ -60,6 +70,7 @@ function LoginFormPage() {
         </label>
         <div className='signupLoginBtn'>
           <button type="submit" className='signupLoginSubmit'>Log In</button>
+          <button onClick={handleDemoLogin} type="submit" className='signupLoginSubmit'>Demo</button>
         </div>
       </div>
     </form>
