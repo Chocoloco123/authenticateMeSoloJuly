@@ -24,18 +24,20 @@ export const getPageComments = () => async(dispatch) => {
 // ! check this one 
 export const addAComment = (imageId, comment) => 
 async(dispatch) => {
+  console.log('thunk imageId: ---------------> ', imageId);
   const res = await csrfFetch(`/api/comments/${imageId}/newComment`, {
     method: 'POST',
     headers: { 'Content-Type': 
     'application.json' },
     body: JSON.stringify(comment),
   });
-
   if (res.ok) {
     const commentData = await res.json();
+    console.log('thunk imageId: ', imageId);
     
     dispatch(addOneComment(commentData.newComment));
   }
+  console.log('thunk imageId: -------> ', imageId);
 }
 
 const initialState = {};

@@ -11,7 +11,9 @@ const AddNewComment = () => {
   const params = useParams();
   const { imageId } = params;
   const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState(sessionUser.id);
   const [theImageId, setTheImageId] = useState('');
+  // const [theImageId, setTheImageId] = useState(imageId);
   // const [imageId, setImageId] = useState('');
   const [comment, setComment] = useState('');
   const [errors, setErrors] = useState([]);
@@ -25,11 +27,13 @@ const AddNewComment = () => {
     const newComment = { // ! newComment
       // userId, // old
       userId: sessionUser.id, // new
-      theImageId,
+      // userId: req.user.id, // new
+      theImageId: imageId,
       // imageId,
       comment,
     };
-    return dispatch(commentActions.addAComment({
+    console.log('theImageId: ', newComment.theImageId); // this works!
+    return dispatch(commentActions.addAComment(imageId,{
         userId,
         theImageId,
         // imageId,

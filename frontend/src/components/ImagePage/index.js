@@ -58,9 +58,9 @@ const SingleImgCont = () => {
     dispatch(getPageComments());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(addAComment())
-  },[dispatch])
+  // useEffect(() => {
+  //   dispatch(addAComment())
+  // },[dispatch])
 
   return (
     <div>

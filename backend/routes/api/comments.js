@@ -30,12 +30,12 @@ router.post('/:imageId(\\d+)/newComment',
   validateComment,
   requireAuth,
   asyncHandler(async(req, res) => {
-    // const { imageId } = req.params;
-    const { userId, imageId, comment } = req.body;
+    const { imageId } = req.params;
+    const { userId,  comment } = req.body;
 
     const newComment = await Comment.create({
-      // userId: req.user.id, // old
-      userId: userId, // new
+      userId: req.user.id, // old
+      // userId: userId, // new
       imageId: imageId, // ! Here lies the problem
       // imageId,
       comment
