@@ -6,7 +6,7 @@ import { NavLink, useParams, useHistory } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
-import { getPageComments, addAComment } from '../../store/comments';
+import { getPageComments, addAComment, deleteComment } from '../../store/comments';
 
 const SingleImgCont = () => {
   const history = useHistory();
@@ -30,20 +30,19 @@ const SingleImgCont = () => {
   
 
   const img = images.find((image) => +imageId === image.id);
-  // console.log('imageId: ', imageId);
-  const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
-  // console.log('imgComments: ', imgComments);
-  // console.log('typeof imageId: ', typeof imageId);
-  // console.log('img: ', img);
 
-  // console.log(sessionUser, sessionUser.id);
-  // console.log(img, img?.userId)
+  const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
+
 
   const handleDelete = async(imageId) => {
     await dispatch(deleteImage(imageId));
     history.push(`/home`)
   }
 
+  const handleCommentDelete = async(commentId) => {
+    await dispatch(deleteComment(commentId));
+    history.push(`/images/${imageId}`);
+  }
   // const handleCommentDel = async(id) => {
   //   await dispatch(deleteComment(id));
   // }
@@ -102,9 +101,9 @@ const SingleImgCont = () => {
           <p key={comment?.id}>
             {comment?.comment}
             {/* delete button */}
-            {/* {sessionUser && sessionUser.id === comment?.userId &&
-              <button onClick={() => handleCommentDel(comment?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
-            } */}
+            {sessionUser && sessionUser.id === comment?.userId &&
+              <button onClick={() => handleCommentDelete(comment?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
+            }
           </p>
         )}
       </div>

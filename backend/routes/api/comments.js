@@ -42,7 +42,22 @@ router.post('/:imageId(\\d+)/newComment',
     })
     return res.json({ newComment });
   })
-)
+);
+
+
+router.delete('/:commentId(\\d+)/delete', 
+  requireAuth,
+  asyncHandler(async(req, res) => {
+  const { commentId } = req.params;
+    
+  const comment = await Comment.findByPk(commentId);
+  
+  
+  await Comment.destroy({ where: { id: comment.id}})
+  
+  res.status(204);
+  return res.json({ comment });
+}))
 
 
 module.exports = router;
