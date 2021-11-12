@@ -8,7 +8,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages } from '../../store/images';
-
+import naturePhoto from '../../media/images/pexels-pixabay-206359_agy77s.jpg'
 
 const LandingContainer = () => {
   // Declare variable from hooks
@@ -33,22 +33,9 @@ const LandingContainer = () => {
   return (
     <div>
       <h1 className='pageName titles'>Find inspiration in nature.</h1>
-      <h3 className='landingText' ></h3>
-      {/* { sessionUser && 
-        <NavLink exact to="/images/addImage" className="add-img-link image-btn">Add Image</NavLink>
-      } */}
+      <h3 className='landingText' >Join the Idyllic community and share the beauty of nature.</h3>
       <div className='imgCont'>
-        {images.map((image) => 
-        // key must be unique!
-        <NavLink to={`/images/${image.id}`} key={image.id} >
-          <img 
-            src={image.imageUrl} 
-            alt={image.imageTitle} 
-            className='homeImages'>
-          </img>
-        </NavLink>
-
-        )}
+        <img src={naturePhoto} className='frontImage' alt='naturePhoto'/>
       </div>
     </div>
   );

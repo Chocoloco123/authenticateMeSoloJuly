@@ -10,6 +10,7 @@ import SingleImgCont from "./components/ImagePage";
 import AddImage from "./components/AddImageContainer";
 import EditImage from "./components/EditImagePage";
 import AddNewComment from './components/AddCommentPage';
+import LandingContainer from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <LandingContainer />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
