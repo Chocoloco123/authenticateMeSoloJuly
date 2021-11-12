@@ -49,14 +49,27 @@ const AddImage = () => {
         imageUrl,
         imageTitle,
         content
-      })
+      }))
       .then(history.push('/home'))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       })
+    
+    // return dispatch(imageActions.addImages({
+    //     userId,
+    //     albumId,
+    //     imageUrl,
+    //     imageTitle,
+    //     content
+    //   })
+    //   .then(history.push('/home'))
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   })
       
-    );
+    // );
     // take the user back to home
     // history.push('/home');
   };
@@ -65,26 +78,26 @@ const AddImage = () => {
   return (
     <div className='add-image'>
       <div className='backBtnPhotoCont'>
-        <NavLink to={`/home`} class='backBtnPhoto' >Back</NavLink>
+        <NavLink to={`/home`} className='backBtnPhoto' >Back</NavLink>
       </div>
       <h3 className='titles'>Add An Image</h3>
       <form onSubmit={handleSubmit} className='add-image editImgFormContainer'>
         <ul className='loginErrorsList'>
-          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
+          {errors.map((error, idx) => <li key={idx} className='addImgErrors'>{error}</li>)}
         </ul>
-        <label for='imageUrl' className='editImgLabel'>Image Url</label>
+        <label htmlFor='imageUrl' className='editImgLabel'>Image Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}
           value={imageUrl}
           placeholder='Image Url'
         />
-        <label for='imageTitle' className='editImgLabel'>Image Title</label>
+        <label htmlFor='imageTitle' className='editImgLabel'>Image Title</label>
         <input
           onChange={(e) => setImageTitle(e.target.value)}
           value={imageTitle}
           placeholder='Image Title'
         />
-        <label for='description' className='editImgLabel'>Description</label>
+        <label htmlFor='description' className='editImgLabel'>Description</label>
         <input
           onChange={(e) => setContent(e.target.value)}
           value={content}

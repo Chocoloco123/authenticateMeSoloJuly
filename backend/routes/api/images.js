@@ -15,6 +15,7 @@ const router = express.Router();
 const validateImage = [
   check('imageUrl')
     .notEmpty()
+    .exists({ checkFalsy: true })
     .withMessage('Please provide a URL for your image.')
     .isURL({ require_protocol: false, require_host: false }),
   check('imageTitle')
@@ -48,7 +49,7 @@ router.post('/newImage',
   validateImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
-    const { userId, albumId, imageUrl, imageTitle, content } = req.body;
+    const { imageUrl, imageTitle, content } = req.body;
     // const { imageUrl, imageTitle, content } = req.body;
     const newImage = await Image.create({ 
       userId: req.user.id,

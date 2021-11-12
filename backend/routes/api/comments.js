@@ -17,18 +17,45 @@ const validateComment = [
     .withMessage('Please fill comment field.')
 ];
 
-router.get('/:imageId(\\d+)',
+router.get('/',
+// router.get('/:imageId(\\d+)',
 asyncHandler(async(req, res) => {
-  const { imageId } = req.params;
-  const comments = await Comment.findAll();
-  const imageComments = await findAll({
-    where: {
-      id: imageId
-    }
-  });
-  res.json();
-})
-)
+  // const { imageId } = req.params;
+  // const comments = await Comment.findAll();
+
+  // const image = await Image.findByPk(imageId);
+  // original below
+  // const imageComments = await Comment.findAll({
+  //   // where: {
+  //   //   id: comments[imageId] 
+  //   // }
+  // });
+  const imageComments = await Comment.findAll();
+  // console.log('commentsBackend: ', comments);
+  // console.log('imageComments: ',imageComments)
+  res.json(imageComments);
+}));
+
+// router.get('/',
+// router.get('/:theImageId(\\d+)',
+// asyncHandler(async(req, res) => {
+//   const { theImageId } = req.params;
+//   // const comments = await Comment.findAll();
+
+//   // const image = await Image.findByPk(imageId);
+//   // original below
+
+//   // find all comments that have the imageId that matches the req.params
+//   const imageComments = await Comment.findAll({
+//     where: {
+//       imageId: theImageId 
+//     }
+//   });
+//   // const imageComments = await Comment.findAll();
+//   // console.log('commentsBackend: ', comments);
+//   // console.log('imageComments: ',imageComments)
+//   return res.json(imageComments);
+// }));
 
 
 module.exports = router;

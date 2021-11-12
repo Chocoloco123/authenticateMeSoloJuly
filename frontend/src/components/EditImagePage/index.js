@@ -56,14 +56,14 @@ const EditImage = () => {
   return (
     <div>
       <div className='backBtnPhotoCont'>
-        <NavLink to={`/images/${imageId}`} class='backBtnPhoto' key={imageId}>Back</NavLink>
+        <NavLink to={`/images/${imageId}`} className='backBtnPhoto' key={imageId}>Back</NavLink>
       </div>
       <form onSubmit={(e) => handleSubmit(e)} className='editImgFormContainer'>
         <h1 className='titles'>Edit Image</h1>
-        <label for='Title' className='labels editImgLabel'>Title</label>
+        <label htmlFor='Title' className='labels editImgLabel'>Title</label>
           <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}
           placeholder='Title'></input>
-        <label for='Description' className='labels editImgLabel'>Description</label>
+        <label htmlFor='Description' className='labels editImgLabel'>Description</label>
           <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
         <div className='imageBtnsBox'>
           <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
@@ -147,10 +147,10 @@ export default EditImage;
 //   return (
 //     <form onSubmit={(e) => handleSubmit(e)} className='editImgFormContainer'>
 //       <h1 className='titles'>Edit Image</h1>
-//       <label for='Title' className='labels editImgLabel'>Title</label>
+//       <label htmlFor='Title' className='labels editImgLabel'>Title</label>
 //         <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}
 //         placeholder='Title'></input>
-//       <label for='Description' className='labels editImgLabel'>Description</label>
+//       <label htmlFor='Description' className='labels editImgLabel'>Description</label>
 //         <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
 //       <div className='imageBtnsBox'>
 //         <button type='submit' className=' image-btn submitEditBtn'>Submit</button>

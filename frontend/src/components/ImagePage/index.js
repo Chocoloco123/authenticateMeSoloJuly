@@ -6,6 +6,7 @@ import { NavLink, useParams, useHistory } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
+import { getPageComments } from '../../store/comments';
 
 const SingleImgCont = () => {
   const history = useHistory();
@@ -13,19 +14,23 @@ const SingleImgCont = () => {
   const { imageId } = params;
   // declare variable from hooks
   const dispatch = useDispatch();
-  // get image from our store
-  const imagesObj = useSelector((state) => state.images); 
+
+
   // get session user
   const sessionUser = useSelector((state) => state.session.user); // get session user
-  
+  // get image from our store
+  const imagesObj = useSelector((state) => state.images); 
+  const commentsObj = useSelector((state) => state.comments);
+
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
-
-  // console.log('images: ', images);
+  const comments = Object.values(commentsObj);
+  console.log('comments: ', comments);
   
   const img = images.find((image) => +imageId === image.id);
   // console.log('imageId: ', imageId);
-  
+  const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
+  console.log('imgComments: ', imgComments);
   // console.log('typeof imageId: ', typeof imageId);
 
   console.log('img: ', img);
@@ -43,10 +48,15 @@ const SingleImgCont = () => {
     // dispatch(deleteImage(img.id))
   // }, [dispatch, img?.id]);
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getPageComments());
+  }, [dispatch]);
+
   return (
     <div>
       <div className='backBtnPhotoCont'>
-        <NavLink to={`/home`} class='backBtnPhoto' >Back</NavLink>
+        <NavLink to={`/home`} className='backBtnPhoto' >Back</NavLink>
       </div>
       <div className='TitleName'>
         <h1 className='titles'>{img?.imageTitle}</h1>
@@ -61,19 +71,26 @@ const SingleImgCont = () => {
         {sessionUser && sessionUser.id === img?.userId &&
           <NavLink to={`/images/${img?.id}/edit`} className='image-btn' id='editBtn'>Update</NavLink> 
         }
-        {/* button for delete goes here */}
         {sessionUser && sessionUser.id === img?.userId &&
         <button onClick={() => handleDelete(img?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
         }
       </div>
       <div className='descriptionBox'>
-        <label for='description' className='descriptionTxt'>Description</label>
+        <label htmlFor='description' className='descriptionTxt'>Description</label>
         <div className='descriptionContBox'>
           <p>
             {img?.content}
           </p>
         </div>
       </div> 
+      <div className='commentsCont'>
+        {imgComments.map((comment) => 
+          <p key={comment?.id}>
+            {comment?.comment}
+          </p>
+        )}
+      </div>
+
     </div>
   )
 }

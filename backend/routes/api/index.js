@@ -4,11 +4,14 @@ const router = require('express').Router();
 // connect session and users
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const imagesRouter = require('./images.js')
+const imagesRouter = require('./images.js');
+const commentsRouter = require('./comments.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/images', imagesRouter);
+// router.use('/comments', commentsRouter);
+router.use('/comments', commentsRouter);
 
 // can now safely remove this test route
 // router.post('/test', (req, res) => {
