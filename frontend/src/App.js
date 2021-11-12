@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import SingleImgCont from "./components/ImagePage";
 import AddImage from "./components/AddImageContainer";
 import EditImage from "./components/EditImagePage";
+import AddNewComment from './components/AddCommentPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path='/images/:imageId/edit'>
             <EditImage />
+          </Route>
+          <Route exact path='/images/:imageId/comments/newComment'>
+            <AddNewComment />
           </Route>
         </Switch>
       )}

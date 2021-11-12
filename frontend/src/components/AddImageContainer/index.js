@@ -15,8 +15,8 @@ const AddImage = () => {
   const [albumId, setAlbumId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [imageTitle, setImageTitle] = useState('');
-  const [errors, setErrors] = useState([]);
   const [content, setContent] = useState('');
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
 

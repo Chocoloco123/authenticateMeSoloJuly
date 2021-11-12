@@ -6,7 +6,7 @@ import { NavLink, useParams, useHistory } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
-import { getPageComments } from '../../store/comments';
+import { getPageComments, addAComment } from '../../store/comments';
 
 const SingleImgCont = () => {
   const history = useHistory();
@@ -22,18 +22,19 @@ const SingleImgCont = () => {
   const imagesObj = useSelector((state) => state.images); 
   const commentsObj = useSelector((state) => state.comments);
 
+
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
   const comments = Object.values(commentsObj);
   console.log('comments: ', comments);
   
+
   const img = images.find((image) => +imageId === image.id);
   // console.log('imageId: ', imageId);
   const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
-  console.log('imgComments: ', imgComments);
+  // console.log('imgComments: ', imgComments);
   // console.log('typeof imageId: ', typeof imageId);
-
-  console.log('img: ', img);
+  // console.log('img: ', img);
 
   // console.log(sessionUser, sessionUser.id);
   // console.log(img, img?.userId)
@@ -42,6 +43,10 @@ const SingleImgCont = () => {
     await dispatch(deleteImage(imageId));
     history.push(`/home`)
   }
+
+  // const handleCommentDel = async(id) => {
+  //   await dispatch(deleteComment(id));
+  // }
 
   useEffect(() => {
     dispatch(getImages());
@@ -52,6 +57,10 @@ const SingleImgCont = () => {
   useEffect(() => {
     dispatch(getPageComments());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(addAComment())
+  },[dispatch])
 
   return (
     <div>
@@ -83,10 +92,19 @@ const SingleImgCont = () => {
           </p>
         </div>
       </div> 
+      <div className='addCommentDiv'>
+        { sessionUser && 
+        <NavLink exact to={`/images/${imageId}/comments/newComment`} className="add-img-link image-btn">Add Comment</NavLink>
+      }
+      </div>
       <div className='commentsCont'>
         {imgComments.map((comment) => 
           <p key={comment?.id}>
             {comment?.comment}
+            {/* delete button */}
+            {/* {sessionUser && sessionUser.id === comment?.userId &&
+              <button onClick={() => handleCommentDel(comment?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
+            } */}
           </p>
         )}
       </div>
