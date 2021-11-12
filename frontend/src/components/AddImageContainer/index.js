@@ -20,6 +20,20 @@ const AddImage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const newImage = {
+  //     userId,
+  //     albumId,
+  //     imageUrl,
+  //     imageTitle,
+  //     content
+  //   };
+  //   dispatch(addImages(newImage));
+  //   // take the user back to home
+  //   history.push('/home');
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newImage = {
@@ -29,10 +43,24 @@ const AddImage = () => {
       imageTitle,
       content
     };
-    dispatch(addImages(newImage));
+    return dispatch(imageActions.addImages({
+        userId,
+        albumId,
+        imageUrl,
+        imageTitle,
+        content
+      })
+      .then(history.push('/home'))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
+      
+    );
     // take the user back to home
-    history.push('/home');
+    // history.push('/home');
   };
+
 
   return (
     <div className='add-image'>
