@@ -7,6 +7,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import * as commentActions from '../../store/comments';
 
 const AddNewComment = () => {
+  const sessionUser = useSelector(state => state.session.user);
   const params = useParams();
   const { imageId } = params;
   const [userId, setUserId] = useState('');
@@ -19,8 +20,9 @@ const AddNewComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newComment = {
-      userId,
+    const newComment = { // ! newComment
+      // userId, // old
+      sessionUser,
       theImageId,
       // imageId,
       comment,

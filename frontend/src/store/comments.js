@@ -21,10 +21,10 @@ export const getPageComments = () => async(dispatch) => {
   dispatch(loadComments(comments));
   return comments;
 }
-
-export const addAComment = (comment) => 
+// ! check this one 
+export const addAComment = (imageId, comment) => 
 async(dispatch) => {
-  const res = await csrfFetch('/api/comments/:imageId(\\d+)/newComment', {
+  const res = await csrfFetch(`/api/comments/${imageId}/newComment`, {
     method: 'POST',
     headers: { 'Content-Type': 
     'application.json' },
