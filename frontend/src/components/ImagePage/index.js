@@ -93,14 +93,13 @@ const SingleImgCont = () => {
       </div> 
       <div className='addCommentDiv'>
         { sessionUser && 
-        <NavLink exact to={`/images/${imageId}/comments/newComment`} className="add-img-link image-btn">Add Comment</NavLink>
+        <NavLink exact to={`/images/${imageId}/comments/newComment`} className=" addComment">Add Comment</NavLink>
       }
       </div>
       <div className='commentsCont'>
         {imgComments.map((comment) => 
-          <p key={comment?.id}>
+          <p key={comment?.id} className='imgPagePTag'>
             {comment?.comment}
-            {/* delete button */}
             {sessionUser && sessionUser.id === comment?.userId &&
               <button onClick={() => handleCommentDelete(comment?.id)} className='deleteBtn submitEditBtn image-btn'>Delete</button>
             }
