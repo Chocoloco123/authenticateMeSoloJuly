@@ -50,8 +50,6 @@ function LoginFormPage() {
   return (
     <form onSubmit={handleSubmit}>
       <div className='formContainer'>
-
-        {/* <img src={IdyllicLogo} class="loginLogo" alt="Idyllic logo"/> */}
         <div className='loginTitleDiv'>
           <h1 className='titles login'>Login</h1>
         </div>

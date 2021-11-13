@@ -15,13 +15,7 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <div className='loginDiv'>
-        <NavLink to="/login" className="navbarItem">Log In</NavLink>
-      </div>
-
-      // <>
-      //   <NavLink to="/login" className="navbarItem">Log In</NavLink>
-      // </>
+      <NavLink to="/login" className="navbarItem" id='navbarItemRight'>Log In</NavLink>
     );
   }
 
@@ -31,12 +25,8 @@ function Navigation({ isLoaded }){
         <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
       </a>
       <div className='navDiv'>
-        {/* <ul className='navUl'> */}
-          {/* <li> */}
-            <NavLink exact to="/home" className="navbarItem">Home</NavLink>
-            {isLoaded && sessionLinks}
-          {/* </li> */}
-        {/* </ul> */}
+        <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+        {isLoaded && sessionLinks}
       </div>
     </div>
 

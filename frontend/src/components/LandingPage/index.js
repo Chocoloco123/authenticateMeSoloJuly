@@ -8,7 +8,8 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages } from '../../store/images';
-import naturePhoto from '../../media/images/pexels-pixabay-206359_agy77s.jpg'
+import naturePhoto from '../../media/images/pexels-pixabay-206359_agy77s.jpg';
+import githubLogo from '../../media/icons/GitHub-Mark-Light-32px.png'
 
 const LandingContainer = () => {
   // Declare variable from hooks
@@ -37,8 +38,13 @@ const LandingContainer = () => {
         <div className='centerImg'>
           <h1 className='pageName titles'>Find inspiration in nature.</h1>
           <h4 className='landingText' >Join the Idyllic community and share the beauty of nature.</h4>
-          <NavLink to="/signup" className="navbarItem signUpButtonFront">Sign Up</NavLink>
+          <NavLink to="/signup" className=" signUpButtonFront">Sign Up</NavLink>
         </div>
+      </div>
+      <div className='landingBottom'>
+        <a href='https://github.com/Chocoloco123/idyllicApp' className='landingBottom'>
+          <img src={githubLogo} alt='githubLogo'></img>
+        </a>
       </div>
     </div>
   );
