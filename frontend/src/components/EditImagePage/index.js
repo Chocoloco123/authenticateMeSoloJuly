@@ -25,6 +25,7 @@ const EditImage = () => {
 
   const [imageTitle, setImageTitle] = useState(img?.imageTitle);
   const [content, setContent] = useState(img?.content);
+  const [errors, setErrors] = useState([]);
 
   const history = useHistory();
 
@@ -34,9 +35,14 @@ const EditImage = () => {
       imageTitle,
       content
     };
-    dispatch(editImage(imageId, imgData));
-    // take the user back to home
-    history.push(`/images/${imageId}`);
+    return dispatch(editImage(imageId, imgData))
+      .then((res) => {
+        if (res.ok) history.push(`/images/${imageId}`);
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
   };
 
   useEffect(() => {
@@ -60,6 +66,9 @@ const EditImage = () => {
       </div>
       <form onSubmit={(e) => handleSubmit(e)} className='editImgFormContainer'>
         <h1 className='titles'>Edit Image</h1>
+        <ul className='loginErrorsList'>
+          {errors.map((error, idx) => <li key={idx} className='addImgErrors'>{error}</li>)}
+        </ul>
         <label htmlFor='Title' className='labels editImgLabel'>Title</label>
           <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}
           placeholder='Title'></input>

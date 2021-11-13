@@ -38,7 +38,9 @@ const validateEditedImage = [
     .withMessage('Please provide an image title'),
   check('content')
     .notEmpty()
-    .withMessage('Please provide a description.'),
+    .withMessage('Please provide a description.')
+    .isLength({ min: 1, max: 1000 })
+    .withMessage('Please provide a description between 1-1000 characters.'),
   handleValidationErrors,
 ];
 
