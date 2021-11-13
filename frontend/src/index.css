@@ -43,38 +43,23 @@
 
 .navDiv {
   display: flex;
+  justify-content: space-between;
+  width: 100vw;
   text-decoration: none;
   /* background-color: black; */
-  background-color: darkslategray;
-  border-bottom: solid #000000;
+  /* background-color: darkslategray; */
+  background-color: black;
+  /* border-bottom: solid #000000; */
 }
 
-/* a {
-  text-decoration: none;
-  padding: 5px;
-  font-size: 20px;
-} 
+.loginDiv {
 
-a.active {
-  color: white;
-}
-a.active:hover {
-  color: gray;
-  text-decoration: none;
-  border-radius: 3px;
 }
 
-a:visited {
-  color: white;
-  padding: 20px;
-  margin: 5px;
+.boxAroundNav {
+  display: flex;
+  
 }
-
-a:visited:hover {
-  color: gray;
-  text-decoration: none;
-  border-radius: 3px;
-} */
 
 .navbarItem:hover {
   color: black;
