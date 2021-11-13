@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images';
 
 
@@ -20,6 +20,7 @@ const AddImage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const sessionUser = useSelector((state) => state.session.user);
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   const newImage = {
@@ -34,6 +35,8 @@ const AddImage = () => {
   //   history.push('/home');
   // };
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newImage = {
@@ -43,23 +46,80 @@ const AddImage = () => {
       imageTitle,
       content
     };
+
+    // const preErrorsArr = [];
+
+    // if (!imageUrl.startsWith('https') || imageUrl === '') {
+    //   // happy
+    //   preErrorsArr.push('Please provide a URL for your image.');
+    // }
+
+    // if ((!imageTitle.length > 2 && !imageTitle.length < 150)) {
+    //   preErrorsArr.push('Please provide a title with a length between 2 - 150 characters.');
+    // } 
+
+    // if (!content.length || content === '') {
+    //   preErrorsArr.push('Please provide a description.');
+    // }
+  
+
+    // setErrors([...preErrorsArr]);
+    // // errors.push(...preErrorsArr);
+    // console.log('errors: ', errors);
+    // console.log('preErrorsArr: ', preErrorsArr);
+
+    // if (preErrorsArr.length < 1) {
+    //   dispatch(imageActions.addImages(newImage));
+    //   console.log('hit the final if statement!!!!!!!')
+    //   history.push('/home');
+    // }
+
+    
+    
+  
+    
+      // console.log('data: ', data)
+      
+    
+    // dispatch(imageActions.addImages(newImage))
+    // .then(() => {
+    //   console.log('errors: ', errors);
+    
+    //   if (errors.length === 0) history.push('/home')
+    // })
+    // .catch(async (res) => {
+    //   const data = await res.json();
+    //   // console.log('data: ', data)
+    //   if (data && data.errors) {
+    //     setErrors(data.errors) 
+    //   } 
+    // })
+    
+    // console.log('imageTitle', imageTitle);
     return dispatch(imageActions.addImages(newImage))
+    .then((res) => {
+      // console.log('this is res: ', res);
+      if (res.ok) {
+        setErrors([]);
+        history.push('/home');
+      }
+    })
     .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     })
-    .then((res) => {
-      if (!errors) history.push('/home');
-    })
   };
 
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className='add-image'>
       <div className='backBtnPhotoCont'>
         <NavLink to={`/home`} className='backBtnPhoto' >Back</NavLink>
       </div>
-      <form onSubmit={handleSubmit} className='add-image editImgFormContainer'>
+      <form onSubmit={(e) => handleSubmit(e)} className='add-image editImgFormContainer'>
       <h2 >Add An Image</h2>
         <ul className='loginErrorsList'>
           {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}

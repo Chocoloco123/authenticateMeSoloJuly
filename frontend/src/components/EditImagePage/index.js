@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Redirect } from 'react-router-dom';
 
 
 // Import the thunk creator
@@ -21,8 +21,8 @@ const EditImage = () => {
   const images = Object.values(imagesObj);
   
   const img = images.find((image) => +imageId === image.id);
-  console.log('img: ', img);
-
+  // console.log('img: ', img);
+  const sessionUser = useSelector((state) => state.session.user);
   const [imageTitle, setImageTitle] = useState(img?.imageTitle);
   const [content, setContent] = useState(img?.content);
   const [errors, setErrors] = useState([]);
@@ -35,14 +35,20 @@ const EditImage = () => {
       imageTitle,
       content
     };
+    
     return dispatch(editImage(imageId, imgData))
+      .then((res) => {
+        // console.log('this is res: ', res);
+        if (res.ok) {
+          setErrors([]);
+          history.push(`/images/${imageId}`);
+        }
+      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       })
-      .then((res) => {
-        if (!errors) history.push(`/images/${imageId}`);
-      })
+        // .then (if (errors.length < 1) history.push(`/images/${imageId}`);
   };
 
   useEffect(() => {
@@ -57,7 +63,11 @@ const EditImage = () => {
       setImageTitle(img.imageTitle);
       setContent(img.content);
     }
-  }, [img])
+  }, [img]);
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div>

@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams, useHistory } from 'react-router-dom';
+import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
@@ -26,7 +26,7 @@ const SingleImgCont = () => {
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
   const comments = Object.values(commentsObj);
-  console.log('comments: ', comments);
+  // console.log('comments: ', comments);
   
 
   const img = images.find((image) => +imageId === image.id);
@@ -60,6 +60,10 @@ const SingleImgCont = () => {
   // useEffect(() => {
   //   dispatch(addAComment())
   // },[dispatch])
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div>

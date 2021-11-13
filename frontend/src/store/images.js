@@ -66,6 +66,7 @@ export const editImage = (imageId, imgData) => async(dispatch) => {
     const imgData = await res.json();
     // check backend route for naming!
     dispatch(editOneImage(imgData.updatedImg));
+    return res; // make sure to use this to send it to the .catch!
   }
 }
 
@@ -96,12 +97,12 @@ const imagesReducer = (state = initialState, action) => {
       });
       return newState;
     case ADD_IMAGE:
-      console.log('action before: ', action.image);
+      // console.log('action before: ', action.image);
       // ! after this action before it doesn't work
-      console.log('action.newImage: ', action.image);
+      // console.log('action.newImage: ', action.image);
       // newState = { ...state, [action.image.id]: action.image };
       newState = { ...state, [action.image.id]: action.image };
-      console.log('action after: ', action.newImage);
+      // console.log('action after: ', action.newImage);
       return newState;
     case EDIT_IMAGE:
       // origin image id key = updated image data 

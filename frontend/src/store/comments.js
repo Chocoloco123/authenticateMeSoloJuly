@@ -39,6 +39,7 @@ async(dispatch) => {
     const commentData = await res.json();
     
     dispatch(addOneComment(commentData.newComment));
+    return res;
   }
 };
 
@@ -70,7 +71,7 @@ const commentsReducer = (state = initialState, action) => {
       return newState;
     case REMOVE_COMMENT:
       newState = { ...state };
-      console.log('action: ', action, 'action.comment: ', action.comment)
+      // console.log('action: ', action, 'action.comment: ', action.comment)
       delete newState[action.comment];
       return newState;
     default: 

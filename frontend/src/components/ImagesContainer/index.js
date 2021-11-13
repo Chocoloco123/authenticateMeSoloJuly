@@ -16,7 +16,7 @@ const ImagesContainer = () => {
   // get images from our store
   const imagesObj = useSelector((state) => state.images);
   const sessionUser = useSelector((state) => state.session.user); // get session user
-  console.log(sessionUser);
+  // console.log(sessionUser);
   const images = Object.values(imagesObj);
 
   // Use a 'react' hook and cause a side effect

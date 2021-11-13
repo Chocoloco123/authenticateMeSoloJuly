@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Redirect } from 'react-router-dom';
 import * as commentActions from '../../store/comments';
 
 const AddNewComment = () => {
@@ -30,16 +30,24 @@ const AddNewComment = () => {
       comment,
     };
     
-    return dispatch(commentActions.addAComment(imageId, newComment))
+    dispatch(commentActions.addAComment(imageId, newComment))
+    .then((res) => {
+        // console.log('this is res: ', res);
+        if (res.ok) {
+          setErrors([]);
+          history.push(`/images/${imageId}`);
+        }
+      })
     .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     })
-    .then((res) => {
-      if (!errors) history.push(`/images/${imageId}`)
-    })
     
   };
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className='addCommentCont'>
