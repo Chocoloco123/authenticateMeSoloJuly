@@ -65,9 +65,9 @@ const EditImage = () => {
         <NavLink to={`/images/${imageId}`} className='backBtnPhoto' key={imageId}>Back</NavLink>
       </div>
       <form onSubmit={(e) => handleSubmit(e)} className='editImgFormContainer'>
-        <h1 className='titles'>Edit Image</h1>
+        <h1 >Edit Image</h1>
         <ul className='loginErrorsList'>
-          {errors.map((error, idx) => <li key={idx} className='addImgErrors'>{error}</li>)}
+          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
         </ul>
         <label htmlFor='Title' className='labels editImgLabel'>Title</label>
           <input onChange={e => setImageTitle(e.target.value)} value={imageTitle}

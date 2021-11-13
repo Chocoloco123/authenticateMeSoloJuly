@@ -48,7 +48,7 @@ const AddNewComment = () => {
         className='backBtnPhoto' >Back</NavLink>
       </div>
       <form onSubmit={handleSubmit} className='add-image editImgFormContainer'>
-      <h3 className='titles'>Add A Comment</h3>
+      <h2 >Add A Comment</h2>
         <ul className='loginErrorsList'>
           {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
         </ul>
