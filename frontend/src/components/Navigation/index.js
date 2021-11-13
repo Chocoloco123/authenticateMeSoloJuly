@@ -21,9 +21,11 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='boxAroundNav'>
-      <a href='/' className='logoLink'>
-        <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
-      </a>
+      <div className='logoBoxDiv'>
+        <a href='/' className='logoLink'>
+          <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
+        </a>
+      </div>
       <div className='navDiv'>
         <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
         {isLoaded && sessionLinks}
