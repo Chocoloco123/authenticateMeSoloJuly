@@ -19,8 +19,7 @@ const validateImage = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a URL for your image.')
     .isURL({ require_protocol: false, require_host: false })
-    .withMessage('Please provide a valid Url.')
-    ,
+    .withMessage('Please provide a valid Url.'),
   check('imageTitle')
     .notEmpty()
     .withMessage('Please provide an image title')
@@ -112,7 +111,7 @@ router.patch('/:imageId(\\d+)/edit',
       
       const updatedImg = await Image.findByPk(imageId);
   
-      console.log(res, 'the happy path :)');
+      // console.log(res, 'the happy path :)');
       return res.json({ updatedImg });
     } else {
       const errors = validationErrors.Array().map((err) => err.msg);
@@ -129,7 +128,7 @@ router.delete('/:imageId(\\d+)/delete',
 
   const image = await Image.findByPk(imageId);
   // if (!image) throw new Error('Cannot find item.');
-    console.log('.........> ', image);
+    // console.log('.........> ', image);
   await Image.destroy({ where: { id: image.id}})
   // await Image.destroy();
   res.status(204);

@@ -35,7 +35,7 @@ module.exports = {
       createdAt: '2018-11-30', updatedAt: '2019-01-22'
     },{
       userId: 1,
-      imageUrl: 'https://res.cloudinary.com/dsz4sha80/image/upload/v1636392866/pexels-pixabay-206359_agy77s.jpg',
+      imageUrl: 'https://res.cloudinary.com/dsz4sha80/image/upload/v1636393278/pexels-pixabay-414102_pksm2p.jpg',
       imageTitle: 'Purple Sky',
       content: 'Took this photo last spring. I wanted to capture the beauty of this colorful scene with the reflection of the lake.',
       createdAt: '2018-11-30', updatedAt: '2019-01-22'
@@ -63,9 +63,9 @@ module.exports = {
     },
     {
       userId: 4,
-      imageUrl: 'https://res.cloudinary.com/dsz4sha80/image/upload/v1636393133/pexels-senuscape-1658967_porrzo.jpg',
-      imageTitle: 'Clouded Mountain Trek',
-      content: 'This train\'s ascending into the clouds.',
+      imageUrl: 'https://res.cloudinary.com/dsz4sha80/image/upload/v1636393284/pexels-pixabay-144244_vynjoh.jpg',
+      imageTitle: 'Lightning Bolt',
+      content: 'Rainy days in the desert.',
       createdAt: '2018-11-30', updatedAt: '2019-01-22'
     },
     {
