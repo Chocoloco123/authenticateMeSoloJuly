@@ -36,12 +36,12 @@ const EditImage = () => {
       content
     };
     return dispatch(editImage(imageId, imgData))
-      .then((res) => {
-        if (res.ok) history.push(`/images/${imageId}`);
-      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
+      })
+      .then((res) => {
+        if (!errors) history.push(`/images/${imageId}`);
       })
   };
 

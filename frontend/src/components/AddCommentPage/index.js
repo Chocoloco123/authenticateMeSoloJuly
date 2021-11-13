@@ -31,13 +31,13 @@ const AddNewComment = () => {
     };
     
     return dispatch(commentActions.addAComment(imageId, newComment))
-      .then((res) => {
-        if (res.ok) history.push(`/images/${imageId}`)
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      })
+    .catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    })
+    .then((res) => {
+      if (!errors) history.push(`/images/${imageId}`)
+    })
     
   };
 

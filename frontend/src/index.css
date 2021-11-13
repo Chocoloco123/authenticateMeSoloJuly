@@ -232,6 +232,7 @@ body {
 .singleImg {
   width: 65%;
   /* height: 200px; */
+  object-fit: scale-down;
   box-shadow: 0 0 5px #000000;
 }
 

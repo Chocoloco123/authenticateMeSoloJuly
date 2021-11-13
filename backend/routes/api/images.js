@@ -112,6 +112,7 @@ router.patch('/:imageId(\\d+)/edit',
       
       const updatedImg = await Image.findByPk(imageId);
   
+      console.log(res, 'the happy path :)');
       return res.json({ updatedImg });
     } else {
       const errors = validationErrors.Array().map((err) => err.msg);

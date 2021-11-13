@@ -44,13 +44,13 @@ const AddImage = () => {
       content
     };
     return dispatch(imageActions.addImages(newImage))
-      .then((res) => {
-        if (res.ok) history.push('/home')
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      })
+    .catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    })
+    .then((res) => {
+      if (!errors) history.push('/home');
+    })
   };
 
 
