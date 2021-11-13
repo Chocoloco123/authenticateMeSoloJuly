@@ -308,6 +308,9 @@ body {
   color: green;
 }
 
+.addCommentDiv {
+  margin-bottom: 15px;
+}
 
 
 /* edit image */
@@ -384,7 +387,7 @@ body {
 
 /* description */
 .descriptionBox {
-  margin: 10%;
+  margin: 0 10%;
 }
 
 .descriptionContBox {
