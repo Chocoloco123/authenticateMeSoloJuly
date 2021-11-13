@@ -27,11 +27,21 @@ function LoginFormPage() {
       });
   }
 
+  // const handleDemoLogin = (e) => {
+  //   e.preventDefault();
+  //   setErrors([]);
+  //   setCredential('DemoUser');
+  //   setPassword('password');
+  //   dispatch(sessionActions.login({
+  //     credential, password
+  //   }))
+  // }
+
   const handleDemoLogin = (e) => {
     e.preventDefault();
     setErrors([]);
-    setCredential('DemoUser');
-    setPassword('password');
+    const credential = 'DemoUser';
+    const password = 'password';
     dispatch(sessionActions.login({
       credential, password
     }))
