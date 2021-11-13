@@ -43,7 +43,7 @@ const LandingContainer = () => {
       </div>
       <div className='landingBottom'>
         <a href='https://github.com/Chocoloco123/idyllicApp' className='landingBottom'>
-          <img src={githubLogo} alt='githubLogo'></img>
+          <img src={githubLogo} alt='githubLogo' className='bottomIcons'></img>
         </a>
       </div>
     </div>

@@ -88,7 +88,7 @@
   color: white;
   text-decoration: none;
   border-radius: 3px;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #navbarItemRight {
@@ -96,7 +96,7 @@
   align-items: center;
   text-decoration: none;
   color: lightgray;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #navbarItemLeft:hover {
@@ -143,6 +143,12 @@
   padding: 5px;
 }
 
+.bottomIcons {
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+}
+
 /* .profileDropdownBox {
   background-color: gray;
 } */
@@ -186,6 +192,10 @@ body {
 
 .authInputs {
   margin:5px;
+}
+
+.introLabel {
+  margin-left: 10px;
 }
 
 .signupLoginBtn {

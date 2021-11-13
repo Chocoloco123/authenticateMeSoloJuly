@@ -51,12 +51,13 @@ function LoginFormPage() {
     <form onSubmit={handleSubmit}>
       <div className='formContainer'>
         <div className='loginTitleDiv'>
-          <h1 className='titles login'>Login</h1>
+          <h1 className='titles login introLabel'>Login</h1>
         </div>
-        <ul className='loginErrorList'>
+        <ul>
+        {/* <ul className='loginErrorLis'> */}
           {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
         </ul>
-        <label>
+        <label className='introLabel'>
           Username or Email
           <input
             type="text"
@@ -66,7 +67,7 @@ function LoginFormPage() {
             className='authInputs'
           />
         </label>
-        <label>
+        <label className='introLabel'>
           Password
           <input
             type="password"
