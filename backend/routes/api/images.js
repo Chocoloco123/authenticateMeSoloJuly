@@ -24,7 +24,7 @@ const validateImage = [
   check('imageTitle')
     .notEmpty()
     .withMessage('Please provide an image title')
-    .isLength({min:2, max: 150})
+    .isLength({ min:2, max: 150 })
     .withMessage('Please provide a title with a length between 2 - 150 characters.'),
   check('content')
     .notEmpty()

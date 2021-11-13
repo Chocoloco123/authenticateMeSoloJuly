@@ -30,12 +30,10 @@ const AddNewComment = () => {
       comment,
     };
     
-    return dispatch(commentActions.addAComment(imageId,{
-        userId,
-        theImageId,
-        comment,
-      }))
-      .then(history.push(`/images/${imageId}`))
+    return dispatch(commentActions.addAComment(imageId, newComment))
+      .then((res) => {
+        if (res.ok) history.push(`/images/${imageId}`)
+      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

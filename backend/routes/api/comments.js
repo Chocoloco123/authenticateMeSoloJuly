@@ -6,7 +6,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 
 const { Comment } = require('../../db/models');
 
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 
 const router = express.Router();
@@ -14,8 +14,12 @@ const router = express.Router();
 const validateComment = [
   check('comment')
     .notEmpty()
+    .withMessage('Please provide a value for comment.')
+    .isLength({ min: 1 })
+    .withMessage('Please provide a comment with at least 1 character.')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a comment.')
+    .withMessage('Please provide a comment.'),
+  handleValidationErrors,
 ];
 
 router.get('/',
@@ -33,14 +37,22 @@ router.post('/:imageId(\\d+)/newComment',
     const { imageId } = req.params;
     const { userId,  comment } = req.body;
 
-    const newComment = await Comment.create({
-      userId: req.user.id, // old
-      // userId: userId, // new
-      imageId: imageId, // ! Here lies the problem
-      // imageId,
-      comment
-    })
-    return res.json({ newComment });
+    const validationErrors = validationResult(req);
+
+    if (validationErrors.isEmpty()) {
+      const newComment = await Comment.create({
+        userId: req.user.id, // old
+        // userId: userId, // new
+        imageId: imageId, // ! Here lies the problem
+        // imageId,
+        comment
+      })
+      return res.json({ newComment });
+    } else {
+      const errors = validationErrors.Array().map((err) => err.msg);
+      return res.json(errors);
+    }
+
   })
 );
 
