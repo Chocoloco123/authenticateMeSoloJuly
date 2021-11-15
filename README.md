@@ -1,6 +1,8 @@
 # Welcome to Idyllic!
 
-Link to live site:  [Idyllic](https://idyllic.herokuapp.com/) 
+Link to live site:  [Idyllic](https://idyllic.herokuapp.com/)
+
+Database schema: [wiki database schema](https://github.com/Chocoloco123/idyllicApp/wiki/Database-Schema)
 
 Idyllic is a Flickr clone meant for anyone with an eye for beauty in nature. Users can share their favorite images and moments to showcase nature at its best. They can also comment on masterpieces to connect with a community of nature lovers from around the world.
 
@@ -22,6 +24,7 @@ Idyllic is a Flickr clone meant for anyone with an eye for beauty in nature. Use
   - Split two terminals and run `cd backend` in one and `cd frontend` in the other. In each of the terminals run `npm start`.
  
 ## Features
+- Link to MVP features: [features](https://github.com/Chocoloco123/idyllicApp/wiki/MVP-Feature-List)
 - Login, signup, and demo login
 - Add, view, update, delete images
 - Add, view, delete comments
