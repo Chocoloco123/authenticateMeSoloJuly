@@ -35,11 +35,21 @@ export const getImages = () => async(dispatch) => {
   return images;
 }
 
-export const addImages = (image) => async(dispatch) => {
+export const addImages = (newImage) => async(dispatch) => {
+  const { image, imageTitle, content } = newImage;
+  const formData = new FormData();
+  if (image) formData.append("image", image);
+  formData.append("imageTitle", imageTitle);
+  formData.append("content", content);
+
   const res = await csrfFetch('/api/images/newImage', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(image),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    // headers: { 'Content-Type': 'application/json' },
+    // body: JSON.stringify(image),
+    body: formData,
   });
   // const data = await res.json()
   // console.log('------> ',data); // this works

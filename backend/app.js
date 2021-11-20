@@ -15,7 +15,10 @@ const app = express(); // initialize Express application
 // MIDDLEWARE
 app.use(morgan('dev')); // connect the morgan middleware for logging info about requests and responses
 app.use(cookieParser()); // parse cookies
-app.use(express.json()); // parse JSON bodies of requests with "Content-Type" of "application/json" 
+// app.use(express.json()); // parse JSON bodies of requests with "Content-Type" of "application/json" 
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Security Middleware
 if (!isProduction) {
