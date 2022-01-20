@@ -19,7 +19,7 @@ const EditImage = () => {
   const imagesObj = useSelector((state) => state.images); 
   // console.log(imagesObj);
   const images = Object.values(imagesObj);
-  
+  // '+' turns value into the numeric representation
   const img = images.find((image) => +imageId === image.id);
   // console.log('img: ', img);
   const sessionUser = useSelector((state) => state.session.user);

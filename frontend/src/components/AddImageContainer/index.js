@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images';
 
 
 // Import the thunk creator
-import { addImages } from '../../store/images';
+// import { addImages } from '../../store/images';
 
 const AddImage = () => {
   const [userId, setUserId] = useState('');
   const [albumId, setAlbumId] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  // const [imageUrl, setImageUrl] = useState('');
+  const [image, setImage] = useState(null);
   const [imageTitle, setImageTitle] = useState('');
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
@@ -42,60 +43,12 @@ const AddImage = () => {
     const newImage = {
       userId,
       albumId,
-      imageUrl,
+      // imageUrl,
+      image,
       imageTitle,
       content
     };
 
-    // const preErrorsArr = [];
-
-    // if (!imageUrl.startsWith('https') || imageUrl === '') {
-    //   // happy
-    //   preErrorsArr.push('Please provide a URL for your image.');
-    // }
-
-    // if ((!imageTitle.length > 2 && !imageTitle.length < 150)) {
-    //   preErrorsArr.push('Please provide a title with a length between 2 - 150 characters.');
-    // } 
-
-    // if (!content.length || content === '') {
-    //   preErrorsArr.push('Please provide a description.');
-    // }
-  
-
-    // setErrors([...preErrorsArr]);
-    // // errors.push(...preErrorsArr);
-    // console.log('errors: ', errors);
-    // console.log('preErrorsArr: ', preErrorsArr);
-
-    // if (preErrorsArr.length < 1) {
-    //   dispatch(imageActions.addImages(newImage));
-    //   console.log('hit the final if statement!!!!!!!')
-    //   history.push('/home');
-    // }
-
-    
-    
-  
-    
-      // console.log('data: ', data)
-      
-    
-    // dispatch(imageActions.addImages(newImage))
-    // .then(() => {
-    //   console.log('errors: ', errors);
-    
-    //   if (errors.length === 0) history.push('/home')
-    // })
-    // .catch(async (res) => {
-    //   const data = await res.json();
-    //   // console.log('data: ', data)
-    //   if (data && data.errors) {
-    //     setErrors(data.errors) 
-    //   } 
-    // })
-    
-    // console.log('imageTitle', imageTitle);
     return dispatch(imageActions.addImages(newImage))
     .then((res) => {
       // console.log('this is res: ', res);
@@ -114,6 +67,17 @@ const AddImage = () => {
     <Redirect to="/" />
   );
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    // console.log(file);
+    // if (file.type.endsWith('png' || 'jpg' || 'jpeg')) {
+      setImage(file);
+      // setErrors([]);
+    // } else {
+    //   setErrors(['Must be a valid image file such as: png, jpg, or jpeg.']);
+    // }
+  };
+
   return (
     <div className='add-image'>
       <div className='backBtnPhotoCont'>
@@ -126,9 +90,9 @@ const AddImage = () => {
         </ul>
         <label htmlFor='imageUrl' className='editImgLabel'>Image Url</label>
         <input
-          onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}
-          placeholder='Image Url'
+          type='file'
+          onChange={(e) => updateFile(e)}
+          placeholder='Please upload file'
         />
         <label htmlFor='imageTitle' className='editImgLabel'>Image Title</label>
         <input

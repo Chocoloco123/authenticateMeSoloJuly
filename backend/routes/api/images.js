@@ -9,17 +9,22 @@ const { Image } = require('../../db/models');
 //  must ust the models to get the associations
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
 
 const router = express.Router();
 
 const validateImage = [
-  check('imageUrl')
-    .notEmpty()
-    .withMessage('Please provide a Url.')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a URL for your image.')
-    .isURL({ require_protocol: false, require_host: false })
-    .withMessage('Please provide a valid Url.'),
+  // check('imageUrl')
+  //   .notEmpty()
+  //   .withMessage('Please provide a Url.')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please provide a URL for your image.')
+  //   .isURL({ require_protocol: false, require_host: false })
+  //   .withMessage('Please provide a valid Url.'),
+  // check('imageUrl')
+  //   .notEmpty()
+  //   .withMessage('Please submit a valid image.')
+  // ,
   check('imageTitle')
     .notEmpty()
     .withMessage('Please provide an image title')
@@ -54,18 +59,23 @@ router.get('/', asyncHandler(async(req, res) => {
 
 // POST new image
 router.post('/newImage',
+  singleMulterUpload("image"),
+  // file('mimetype').custom((val) => val.endsWith('png' || 'jpg' || 'jpeg')),
   validateImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
-    const { imageUrl, imageTitle, content } = req.body;
     // const { imageUrl, imageTitle, content } = req.body;
-    
+    const { imageTitle, content } = req.body;
+    const newImageUploadUrl = await singlePublicFileUpload(req.file);
+    // const { imageUrl, imageTitle, content } = req.body;
+    // console.log('=====>', req)
     const validationErrors = validationResult(req);
-
+  
     if (validationErrors.isEmpty()) {
       const newImage = await Image.create({ 
         userId: req.user.id,
-        imageUrl, 
+        // imageUrl, 
+        imageUrl:newImageUploadUrl,
         imageTitle, 
         content  
       });
