@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images';
 
 
 // Import the thunk creator
-import { addImages } from '../../store/images';
+// import { addImages } from '../../store/images';
 
 const AddImage = () => {
   const [userId, setUserId] = useState('');
@@ -69,7 +69,7 @@ const AddImage = () => {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     // if (file.type.endsWith('png' || 'jpg' || 'jpeg')) {
       setImage(file);
       // setErrors([]);

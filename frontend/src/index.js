@@ -7,7 +7,7 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
-import { EditFormProvider } from './Context/EditFormContext';
+// import { EditFormProvider } from './Context/EditFormContext';
 
 const store = configureStore();
 

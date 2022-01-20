@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, Redirect } from 'react-router-dom';
@@ -10,9 +10,9 @@ const AddNewComment = () => {
   const sessionUser = useSelector(state => state.session.user);
   const params = useParams();
   const { imageId } = params;
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   // const [userId, setUserId] = useState(sessionUser.id);
-  const [theImageId, setTheImageId] = useState('');
+  // const [theImageId, setTheImageId] = useState('');
   // const [theImageId, setTheImageId] = useState(imageId);
   // const [imageId, setImageId] = useState('');
   const [comment, setComment] = useState('');

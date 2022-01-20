@@ -68,7 +68,7 @@ router.post('/newImage',
     const { imageTitle, content } = req.body;
     const newImageUploadUrl = await singlePublicFileUpload(req.file);
     // const { imageUrl, imageTitle, content } = req.body;
-    console.log('=====>', req)
+    // console.log('=====>', req)
     const validationErrors = validationResult(req);
   
     if (validationErrors.isEmpty()) {

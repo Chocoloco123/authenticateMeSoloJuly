@@ -6,7 +6,7 @@ import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
-import { getPageComments, addAComment, deleteComment } from '../../store/comments';
+import { getPageComments, deleteComment } from '../../store/comments';
 
 const SingleImgCont = () => {
   const history = useHistory();

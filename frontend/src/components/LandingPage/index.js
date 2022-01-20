@@ -1,13 +1,13 @@
 
 
 // Import hooks from 'react'. Q: Which hook is meant for causing side effects? (A: useEffect)
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // Import hooks from 'react-redux'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 
 // Import the thunk creator
-import { getImages } from '../../store/images';
+// import { getImages } from '../../store/images';
 import naturePhoto from '../../media/images/pexels-pixabay-206359_agy77s.jpg';
 import githubLogo from '../../media/icons/GitHub-Mark-Light-32px.png'
 
