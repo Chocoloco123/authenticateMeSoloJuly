@@ -10,7 +10,6 @@ const { Image } = require('../../db/models');
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
-const { noExtendLeft } = require('sequelize/types/lib/operators');
 
 const router = express.Router();
 
@@ -164,7 +163,7 @@ router.get('/search/:searched', asyncHandler(async(req, res) => {
   if (images) {
     return res.json(images);
   } else {
-    return noExtendLeft(searchErr('Image does not exist'));
+    return next(searchErr('Image does not exist'));
   }
 }))
 
