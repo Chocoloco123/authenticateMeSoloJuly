@@ -41,11 +41,11 @@ const LandingContainer = () => {
           <NavLink to="/signup" className=" signUpButtonFront">Sign Up</NavLink>
         </div>
       </div>
-      <div className='landingBottom'>
+      <footer className='landingBottom'>
         <a href='https://github.com/Chocoloco123/idyllicApp' className='landingBottom'>
           <img src={githubLogo} alt='githubLogo' className='bottomIcons'></img>
         </a>
-      </div>
+      </footer>
     </div>
   );
 };
