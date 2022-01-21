@@ -10,6 +10,7 @@ const { Image } = require('../../db/models');
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
+const { noExtendLeft } = require('sequelize/types/lib/operators');
 
 const router = express.Router();
 
@@ -143,6 +144,28 @@ router.delete('/:imageId(\\d+)/delete',
   // await Image.destroy();
   res.status(204);
   return res.json({ image });
+}))
+
+const searchErr = (err) => {
+  const error = new Error(err);
+  error.status = 401;
+  error.title = "Search failed";
+  error.errors = [err];
+  return error;
+}
+
+router.get('/search/:searched', asyncHandler(async(req, res) => {
+  const images = await Image.findAll({
+    where: {
+      imageTitle: { [Op.iLike]: `%${searched}%`},
+    }
+  })
+
+  if (images) {
+    return res.json(images);
+  } else {
+    return noExtendLeft(searchErr('Image does not exist'));
+  }
 }))
 
 
