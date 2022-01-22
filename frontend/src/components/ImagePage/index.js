@@ -68,7 +68,7 @@ const SingleImgCont = () => {
   return (
     <div>
       <div className='backBtnPhotoCont'>
-        <NavLink to={`/home`} className='backBtnPhoto' >Back</NavLink>
+        <NavLink to={`/home`} className='backBtnPhoto' >Back to Home</NavLink>
       </div>
       <div className='TitleName'>
         <h1 className='titles'>{img?.imageTitle}</h1>

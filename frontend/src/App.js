@@ -11,6 +11,7 @@ import AddImage from "./components/AddImageContainer";
 import EditImage from "./components/EditImagePage";
 import AddNewComment from './components/AddCommentPage';
 import LandingContainer from "./components/LandingPage";
+import SearchedImagePage from "./components/search/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path='/images/:imageId/comments/newComment'>
             <AddNewComment />
+          </Route>
+          <Route exact path="/search/:searched">
+            <SearchedImagePage />
           </Route>
         </Switch>
       )}

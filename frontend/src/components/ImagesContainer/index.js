@@ -39,14 +39,13 @@ const ImagesContainer = () => {
       <div className='imgCont'>
         {images.map((image) => 
         // key must be unique!
-        <NavLink to={`/images/${image.id}`} key={image.id} >
+        <NavLink to={`/images/${image.id}`} key={image.id} className='homeImages-anchor'>
           <img 
             src={image.imageUrl} 
             alt={image.imageTitle} 
             className='homeImages'>
           </img>
         </NavLink>
-
         )}
       </div>
     </div>

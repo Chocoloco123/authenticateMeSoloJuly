@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import IdyllicLogo from '../../media/idyllic-new/idyllicLogoNewLargeBlack.png'
+import SearchBar from '../search/SearchBar';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -20,29 +21,20 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div className='boxAroundNav'>
+    <header className='navItemsCont'>
       <div className='logoBoxDiv'>
         <a href='/' className='logoLink'>
           <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
         </a>
+        <div className='navSearchNLinks'>  
+          {sessionUser ? <SearchBar /> : null}
+          <div className='navDiv'>
+            <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+            {isLoaded && sessionLinks}
+          </div>
+        </div>
       </div>
-      <div className='navDiv'>
-        <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
-        {isLoaded && sessionLinks}
-      </div>
-    </div>
-
-    // <div className='boxAroundNav'>
-    //   <div className='navDiv'>
-    //     <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
-    //     <ul className='navUl'>
-    //       <li>
-    //         <NavLink exact to="/home" className="navbarItem">Home</NavLink>
-    //         {isLoaded && sessionLinks}
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </div>
+    </header>
   );
 }
 

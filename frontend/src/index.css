@@ -61,15 +61,20 @@
 .logoutBtn {
   border: 0px;
 }
+/* nav */
 
 .navDiv {
   display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   text-decoration: none;
   /* background-color: black; */
   /* background-color: darkslategray; */
   background-color: black;
   /* border-bottom: solid #000000; */
+  padding-top: 50px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  align-items: center;
 }
 
 .boxAroundNav {
@@ -77,10 +82,14 @@
   height: 118px;
 }
 
+/* header orientation of items */
 .logoBoxDiv {
   display: flex;
   align-items: center;
   background-color: black;
+  width: 100%;
+  height: 120px;
+  /* justify-content: space-between; */
 }
 
 #navbarItemRight:hover {
@@ -134,13 +143,31 @@
   /* background-color: darkseagreen */
 }
 
+.navSearchNLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 120px;
+}
+
+.navItemsCont {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100vw;
+  height: 120px;
+}
+
 .profile-dropdown {
   overflow-y: hidden;
   text-decoration: none;
   list-style-type: none;
   background-color: gray;
   border-radius: 5px;
-  padding: 5px;
+  /* padding: 5px; */
+  padding: 4px;
+  margin-right: 10px;
+  /* margin: 0px; */
+  /* margin-right: 10px; */
 }
 
 .bottomIcons {
@@ -237,35 +264,61 @@ body {
 } */
 
 /* home page/feed */
-.imgCont {
+/* .imgCont {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-auto-rows: 240px;
   margin: 10px;
+} */
+.imgCont {
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px;
 }
+
 .homeImages {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem;
+  width: 330px;
+  height: 240px;
+  border-radius: 3px;
+  /* transition: all 200ms; */
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  object-fit: cover;
+  margin: 10px;
+  /* padding: 5px; */
+}
+
+/* .homeImages {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem;
-  /* width: 200px;
-  height: 200px; */
-  width: 100%;
-  height: 100%;
-  /* padding: 5px; */
+  width: 330px;
+  height: 240px;
   border-radius: 3px;
   transition: all 300ms;
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  /* margin:5px; */
-}
+  object-fit: cover;
+  margin:5px;
+} */
 
 .homeImages:hover {
   /* filter: grayscale(80%); */
-  padding: 2px;
+  /* padding: 2px; */
+  -moz-box-shadow: 0 0 5px black;
+  -webkit-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
 }
 
 
