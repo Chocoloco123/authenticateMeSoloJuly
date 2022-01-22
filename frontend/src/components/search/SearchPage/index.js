@@ -6,7 +6,8 @@ import { useParams, NavLink } from 'react-router-dom'
 import './SearchPage.css'
 
 const SearchedImagePage = () => {
-  const searchData = useSelector((state) => state?.searchRes)
+  const images = useSelector((state) => state?.searchResult)
+  console.log('this is images: ', images)
   const dispatch = useDispatch();
 
   const { searched } = useParams();
@@ -15,11 +16,11 @@ const SearchedImagePage = () => {
   }, [dispatch, searched])
 
 
-  if (!searchData?.images) {
+  if (!images?.length) {
     return null;
   }
 
-  const images = Object.values(searchData?.images);
+  // const images = Object.values(searchData?.searchResult);
   
   if (!images.length) {
     return (<h1 className="searchResTitle">No Images found for "{searched}"</h1>)
