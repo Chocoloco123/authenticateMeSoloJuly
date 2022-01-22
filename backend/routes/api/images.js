@@ -10,6 +10,7 @@ const { Image } = require('../../db/models');
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation'); // import handleValidationErrors
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
+const { Op } = require('sequelize')
 
 const router = express.Router();
 
@@ -154,6 +155,7 @@ const searchErr = (err) => {
 }
 
 router.get('/search/:searched', asyncHandler(async(req, res) => {
+  const { searched } = req.params;
   const images = await Image.findAll({
     where: {
       imageTitle: { [Op.iLike]: `%${searched}%`},

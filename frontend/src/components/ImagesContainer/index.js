@@ -46,7 +46,6 @@ const ImagesContainer = () => {
             className='homeImages'>
           </img>
         </NavLink>
-
         )}
       </div>
     </div>
