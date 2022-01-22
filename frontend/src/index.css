@@ -71,6 +71,8 @@
   /* background-color: darkslategray; */
   background-color: black;
   /* border-bottom: solid #000000; */
+  padding-top: 40px;
+  padding-bottom: 39px;
 }
 
 .boxAroundNav {
@@ -147,7 +149,7 @@
 .navItemsCont {
   display: flex;
   justify-content: space-between;
-  min-width: 100%;
+  min-width: 100vw;
   height: 100px;
 }
 

@@ -8,7 +8,7 @@ import './SearchPage.css'
 const SearchedImagePage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const images = useSelector((state) => state?.searchResult)
-  console.log('this is images: ', images)
+
   const dispatch = useDispatch();
 
   const { searched } = useParams();
@@ -20,12 +20,12 @@ const SearchedImagePage = () => {
     <Redirect to="/" />
   );
 
-  if (!images?.length) {
-    return null;
-  }
+  // if (!images?.length) {
+  //   return null;
+  // }
   
   if (!images.length) {
-    return (<h1 className="searchResTitle">No Images found for "{searched}"</h1>)
+    return (<h1 className="searchResTitle">No images found for "{searched}"</h1>)
   } else {
     return (
       <div className="searchResults-Content">
