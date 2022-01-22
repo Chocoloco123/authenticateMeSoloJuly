@@ -61,10 +61,11 @@
 .logoutBtn {
   border: 0px;
 }
+/* nav */
 
 .navDiv {
   display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   text-decoration: none;
   /* background-color: black; */
   /* background-color: darkslategray; */
@@ -77,10 +78,13 @@
   height: 118px;
 }
 
+/* header orientation of items */
 .logoBoxDiv {
   display: flex;
   align-items: center;
   background-color: black;
+  width: 100%;
+  /* justify-content: space-between; */
 }
 
 #navbarItemRight:hover {
@@ -134,6 +138,19 @@
   /* background-color: darkseagreen */
 }
 
+.navSearchNLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.navItemsCont {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100%;
+  height: 100px;
+}
+
 .profile-dropdown {
   overflow-y: hidden;
   text-decoration: none;
@@ -141,6 +158,7 @@
   background-color: gray;
   border-radius: 5px;
   padding: 5px;
+  margin-right: 10px;
 }
 
 .bottomIcons {

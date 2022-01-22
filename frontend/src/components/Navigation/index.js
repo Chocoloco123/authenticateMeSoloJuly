@@ -21,18 +21,18 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <header >
+    <header className='navItemsCont'>
       <div className='logoBoxDiv'>
         <a href='/' className='logoLink'>
           <img src={IdyllicLogo} className="loginLogo" alt="Idyllic logo"/>
         </a>
-      </div>
-      <div className='navDiv'>
-        <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
-        {isLoaded && sessionLinks}
-      </div>
-      <div>
-        <SearchBar />
+        <div className='navSearchNLinks'>  
+          {sessionUser ? <SearchBar /> : null}
+          <div className='navDiv'>
+            <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+            {isLoaded && sessionLinks}
+          </div>
+        </div>
       </div>
     </header>
   );

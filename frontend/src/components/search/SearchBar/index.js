@@ -41,8 +41,11 @@ const SearchBar = () => {
   }
 
   return (
-    <form>
-      <div className=''>
+    <form className='searchForm'>
+      <div className='searchBarCont'>
+        <div>
+        <button type="submit" className="searchBtn" onClick={(e) => handleSearchClick(e)}><i className="fas fa-search fa-lg"></i></button>
+        </div>
         <input
           type='text'
           placeholder='Idyllic landscapes and nature awaits...'
@@ -52,9 +55,6 @@ const SearchBar = () => {
           className='searchBar'
           >
         </input>
-      <div>
-        <button type="submit" className="searchBtn" onClick={(e) => handleSearchClick(e)}><i className="fas fa-search fa-lg"></i></button>
-      </div>
       </div>
     </form>
   )
