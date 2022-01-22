@@ -15,6 +15,7 @@ const SearchBar = () => {
       e.preventDefault();
 
       history.push("/")
+      setSearch('')
     } else if (e.key === 'Enter') {
       e.preventDefault();
       let data = await dispatch(searchForImage(search));
@@ -22,6 +23,7 @@ const SearchBar = () => {
       if (data) {
         history.push(`/search/${search}`)
       }
+      setSearch('')
     }
   }
 
@@ -30,6 +32,7 @@ const SearchBar = () => {
 
     if (search.trim() === '') {
         history.push('/home')
+        setSearch('')
       } else {
 
         let data = await dispatch(searchForImage(search));
@@ -37,6 +40,7 @@ const SearchBar = () => {
         if (data) {
           history.push(`/search/${search}`)
         }
+        setSearch('')
       }
   }
 
