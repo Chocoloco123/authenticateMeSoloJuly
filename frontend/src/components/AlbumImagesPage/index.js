@@ -8,9 +8,14 @@ import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
 import './AlbumImagePage.css'
 
 const AlbumImagesPage = () => {
+  const imagesObj = useSelector((state) => state.images)
+  const imagesArr = Object.values(imagesObj);
 
   return(
-    'hello world'
+    <div>
+      {imagesArr.length < 0 ? 'hello world' : 'empty' }
+    </div>
+    
   )
 }
 
