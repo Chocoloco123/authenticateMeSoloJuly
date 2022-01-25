@@ -23,11 +23,15 @@ const albumsReducer = (state = initialState, action) => {
       newState = { ...state };
       action.albums.forEach((album) => {
         newState[album.id] = album;
-      });
+      })
       return newState;
+      // action.albums.forEach((album) => {
+      //   newState[album.id] = album;
+      // });
+      // return newState;
     default: 
       return state;
   }
 }
 
-export default albumsReducer
+export default albumsReducer;
