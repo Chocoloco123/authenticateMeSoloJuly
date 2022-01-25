@@ -14,6 +14,7 @@ import LandingContainer from "./components/LandingPage";
 import SearchedImagePage from "./components/search/SearchPage";
 import AlbumsPage from "./components/AlbumsPage";
 import AlbumImagesPage from "./components/AlbumImagesPage";
+import AddAlbum from "./components/NewAlbum";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/albums">
             <AlbumsPage />
+          </Route>
+          <Route exact path='/albums/newAlbum'>
+            <AddAlbum />
           </Route>
           <Route exact path="/albums/:albumName">
             <AlbumImagesPage />
