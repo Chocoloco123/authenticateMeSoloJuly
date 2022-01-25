@@ -34,7 +34,7 @@ const AlbumsPage = () => {
       }
       <div>
         {userAlbums.map((album) => 
-          <NavLink to={`/albums/${album.title}`} key={album.id}>
+          <NavLink to={`/albums/${album.id}/${album.title}`} key={album.id}>
             {album.title}
           </NavLink>
         )}

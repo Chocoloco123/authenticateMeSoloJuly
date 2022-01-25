@@ -1,8 +1,9 @@
-import AddAlbum from '../components/NewAlbum';
+
 import { csrfFetch } from './csrf';
 
 const LOAD_ALBUMS = 'albums/LOAD_ALBUMS';
 const ADD_ALBUM = 'albums/ADD_ALBUM';
+const EDIT_ALBUM = 'albums/EDIT_ALBUM';
 
 const loadAlbums = (albums) => ({
   type: LOAD_ALBUMS,
@@ -13,6 +14,11 @@ const addAlbum = (album) => ({
   type: ADD_ALBUM,
   album
 });
+
+const editAlbum = (album) => ({
+  type: EDIT_ALBUM,
+  album
+})
 
 export const getAlbums = () => async(dispatch) => {
   const res = await fetch('/api/albums');
@@ -32,6 +38,21 @@ export const addAnAlbum = (data) => async(dispatch) => {
     const newAlbum = await res.json();
     dispatch(addAlbum(newAlbum));
     return newAlbum;
+  }
+}
+
+export const editAnAlbum = (albumId, albumName, data) => async(dispatch) => {
+  const { title } = data;
+  const res = await csrfFetch(`/api/albums/${albumId}/${albumName}/edit`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({title})
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(editAlbum(data.updatedAlbum));
+    return res;
   }
 }
 

@@ -15,6 +15,7 @@ import SearchedImagePage from "./components/search/SearchPage";
 import AlbumsPage from "./components/AlbumsPage";
 import AlbumImagesPage from "./components/AlbumImagesPage";
 import AddAlbum from "./components/NewAlbum";
+import AlbumEdit from "./components/AlbumEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,8 +62,11 @@ function App() {
           <Route exact path='/albums/newAlbum'>
             <AddAlbum />
           </Route>
-          <Route exact path="/albums/:albumName">
+          <Route exact path="/albums/:albumId/:albumName">
             <AlbumImagesPage />
+          </Route>
+          <Route exact path='/albums/:albumId/:albumName/edit'>
+            <AlbumEdit />
           </Route>
         </Switch>
       )}
