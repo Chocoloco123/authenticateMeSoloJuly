@@ -1,26 +1,42 @@
 import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { getAlbums } from '../../store/albums';
 import "./AlbumsPage.css"
 
 const AlbumsPage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const albumsObj = useSelector((state) => state.albums);
-  console.log('this is albums',albumsObj);
+  const sessionUser = useSelector((state) => state.session.user.id)
+  
+  const albumsArr = Object.values(albumsObj);
+  
+  const userAlbums = albumsArr.filter((album) => album.userId === sessionUser);
 
   useEffect(() => {
     dispatch(getAlbums())
   }, [dispatch])
 
-  return(
-    'Hello world'
-    // <div>
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
-    // </div>
+  return(
+    <div>
+      <div className='backBtnPhotoCont'>
+        <NavLink to={`/home`} className='backBtnPhoto' >Back to Home</NavLink>
+      </div>
+      <h1>Albums</h1>
+      <div>
+        {userAlbums.map((album) => 
+          <NavLink to={`/albums/${album.title}`} key={album.id}>
+            {album.title}
+          </NavLink>
+        )}
+      </div>
+    </div>
   )
 }
 

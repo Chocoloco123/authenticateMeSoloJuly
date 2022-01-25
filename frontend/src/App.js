@@ -13,6 +13,7 @@ import AddNewComment from './components/AddCommentPage';
 import LandingContainer from "./components/LandingPage";
 import SearchedImagePage from "./components/search/SearchPage";
 import AlbumsPage from "./components/AlbumsPage";
+import AlbumImagesPage from "./components/AlbumImagesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,9 @@ function App() {
           </Route>
           <Route exact path="/albums">
             <AlbumsPage />
+          </Route>
+          <Route exact path="/albums/:albumName">
+            <AlbumImagesPage />
           </Route>
         </Switch>
       )}

@@ -6,3 +6,12 @@ import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
 // import { getAlbums } from '../../store/albums';
 
 import './AlbumImagePage.css'
+
+const AlbumImagesPage = () => {
+
+  return(
+    'hello world'
+  )
+}
+
+export default AlbumImagesPage;

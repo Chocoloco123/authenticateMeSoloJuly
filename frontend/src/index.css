@@ -132,6 +132,16 @@
   margin: 5px;
 } */
 
+.navBarEl {
+  color: white;
+  text-decoration: none;
+}
+
+.navBarEl:active {
+  background-color: white;
+  text-decoration: none;
+}
+
 .navUl{
   display: flex;
   align-items: center;
