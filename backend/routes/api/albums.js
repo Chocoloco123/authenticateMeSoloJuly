@@ -11,20 +11,7 @@ const { Op } = require('sequelize')
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
-  // console.log('(outside)this is the users ID: ',req.user.id)
-  // const { userId } = req.body;
-  const albums = await Album.findAll(
-  //   {
-  //   where: {
-  //     userId: req.user.id
-  //   }
-  // }
-  );
-  // console.log('this is the users ID: ',req.user.id)
-  // if (images) {
-    // return res.json(albums);
-
-  // }
+  const albums = await Album.findAll()
   res.json(albums);
 }))
 
