@@ -25,10 +25,8 @@ const albumsReducer = (state = initialState, action) => {
         newState[album.id] = album;
       });
       return newState;
-    
     default: 
       return state;
-    
   }
 }
 

@@ -32,6 +32,10 @@ function Navigation({ isLoaded }){
             <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
             {isLoaded && sessionLinks}
           </div>
+          <div>
+            <NavLink exact to="/albums">Albums</NavLink>
+            {isLoaded && sessionLinks}
+          </div>
         </div>
       </div>
     </header>
