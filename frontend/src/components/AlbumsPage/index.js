@@ -17,7 +17,9 @@ const AlbumsPage = () => {
 
   useEffect(() => {
     dispatch(getAlbums())
-  }, [dispatch])
+  }, [dispatch]);
+
+  
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -34,7 +36,7 @@ const AlbumsPage = () => {
       }
       <div>
         {userAlbums.map((album) => 
-          <NavLink to={`/albums/${album.id}/${album.title}`} key={album.id}>
+          <NavLink to={`/albums/${album?.id}/${album?.title}`} key={album?.id}>
             {album?.title}
           </NavLink>
         )}

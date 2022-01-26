@@ -68,7 +68,7 @@ export const deleteAnAlbum = (albumId) => async(dispatch) => {
   });
 
   if (res.ok) {
-    dispatch(deleteAnAlbum(albumId))
+    dispatch(deleteAlbum(albumId))
   }
 }
 
@@ -92,7 +92,8 @@ const albumsReducer = (state = initialState, action) => {
       return newState;
     case DELETE_ALBUM:
       newState = { ...state };
-      delete newState[action.album];
+      // delete newState[action.album]
+      delete newState[action.album.id];
       return newState;
     default: 
       return state;
