@@ -8,7 +8,7 @@ import "./AlbumsPage.css"
 
 const AlbumsPage = () => {
   const dispatch = useDispatch();
-  const albumsObj = useSelector((state) => state.albums);
+  const albumsObj = useSelector((state) => state?.albums);
   const sessionUser = useSelector((state) => state.session.user.id)
   
   const albumsArr = Object.values(albumsObj);
@@ -35,7 +35,7 @@ const AlbumsPage = () => {
       <div>
         {userAlbums.map((album) => 
           <NavLink to={`/albums/${album.id}/${album.title}`} key={album.id}>
-            {album.title}
+            {album?.title}
           </NavLink>
         )}
       </div>

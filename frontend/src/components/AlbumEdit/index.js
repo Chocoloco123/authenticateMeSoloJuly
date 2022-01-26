@@ -9,10 +9,11 @@ const AlbumEdit = () => {
   const history = useHistory();
   const { albumId, albumName } = params;
   const sessionUser = useSelector((state) => state.session.user);
-  const albumsObj = useSelector((state) => state.albums)
+  const albumsObj = useSelector((state) => state.albums);
+  const album = albumsObj[albumId];
 
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(albumName);
+  const [title, setTitle] = useState(album?.title);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -22,7 +23,7 @@ const AlbumEdit = () => {
       title
     }
 
-    let theEditedAlbum = dispatch(editAnAlbum(albumId, albumName ,editedAlbum));
+    let theEditedAlbum = dispatch(editAnAlbum(album.id, album.title ,editedAlbum));
 
     if (theEditedAlbum) {
       history.push(`/albums`)
@@ -31,7 +32,13 @@ const AlbumEdit = () => {
 
   useEffect(() => {
     dispatch(getAlbums())
-  }, [dispatch, ])
+  }, [dispatch, album?.title])
+
+  useEffect(() => {
+    if (album) {
+      setTitle(album?.title)
+    }
+  }, [album])
 
   if (!sessionUser) return (
     <Redirect to="/" />

@@ -70,6 +70,10 @@ const albumsReducer = (state = initialState, action) => {
     case ADD_ALBUM: 
       newState = { ...state, [action.album.id]:action.album }
       return newState;
+    case EDIT_ALBUM:
+      state[action.album.id] = action.album;
+      newState = { ...state };
+      return newState;
     default: 
       return state;
   }

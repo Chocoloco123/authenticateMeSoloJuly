@@ -9,13 +9,15 @@ import { getAlbums } from '../../store/albums';
 import './AlbumImagePage.css'
 
 const AlbumImagesPage = () => {
+  const params = useParams();
   const dispatch = useDispatch();
   const imagesObj = useSelector((state) => state.images)
   const albumsObj = useSelector((state) => state.albums);
+  const { albumName, albumId } = params;
+  const albumTitle = albumsObj[albumId]?.title;
+  console.log('this is album object: ', albumTitle)
   console.log('this is albumsObj: ', albumsObj)
   const imagesArr = Object.values(imagesObj);
-  const params = useParams();
-  const { albumName, albumId } = params;
 
   useEffect(() => {
     dispatch(getAlbums())
@@ -23,7 +25,7 @@ const AlbumImagesPage = () => {
 
   return(
     <div>
-      <h2>{albumName}</h2>
+      <h2>{albumTitle}</h2>
       <div>
         <NavLink to={`/albums/${albumId}/${albumName}/edit`}>Edit</NavLink>
       </div>
