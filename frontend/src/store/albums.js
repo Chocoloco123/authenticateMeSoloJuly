@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 const LOAD_ALBUMS = 'albums/LOAD_ALBUMS';
 const ADD_ALBUM = 'albums/ADD_ALBUM';
 const EDIT_ALBUM = 'albums/EDIT_ALBUM';
+const DELETE_ALBUM = 'albums/Delete_ALBUM';
 
 const loadAlbums = (albums) => ({
   type: LOAD_ALBUMS,
@@ -18,7 +19,12 @@ const addAlbum = (album) => ({
 const editAlbum = (album) => ({
   type: EDIT_ALBUM,
   album
-})
+});
+
+const deleteAlbum = (album) => ({
+  type: DELETE_ALBUM,
+  album
+});
 
 export const getAlbums = () => async(dispatch) => {
   const res = await fetch('/api/albums');
@@ -56,6 +62,16 @@ export const editAnAlbum = (albumId, albumName, data) => async(dispatch) => {
   }
 }
 
+export const deleteAnAlbum = (albumId) => async(dispatch) => {
+  const res = await csrfFetch(`/api/albums/${albumId}/delete`, {
+    method: 'DELETE',
+  });
+
+  if (res.ok) {
+    dispatch(deleteAnAlbum(albumId))
+  }
+}
+
 const initialState = {}
 
 const albumsReducer = (state = initialState, action) => {
@@ -73,6 +89,10 @@ const albumsReducer = (state = initialState, action) => {
     case EDIT_ALBUM:
       state[action.album.id] = action.album;
       newState = { ...state };
+      return newState;
+    case DELETE_ALBUM:
+      newState = { ...state };
+      delete newState[action.album];
       return newState;
     default: 
       return state;

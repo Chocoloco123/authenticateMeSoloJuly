@@ -59,7 +59,15 @@ router.put('/:albumId(\\d+)/:albumName/edit', validateAlbum, requireAuth, asyncH
     const errors = validationErrors.Array().map((err) => err.msg);
     return res.json(errors);
   }
+}))
 
+router.delete('/:albumId(\\d+)/delete', requireAuth, asyncHandler(async(req, res) => {
+  const { albumId } = req.params;
+
+  const album = await Albums.findByPk(albumId);
+  await Album.destroy({ where: { id: album.id }})
+  res.status(204);
+  return res.json({ album })
 
 }))
 
