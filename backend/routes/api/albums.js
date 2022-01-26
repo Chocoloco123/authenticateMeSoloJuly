@@ -45,7 +45,7 @@ router.put('/:albumId(\\d+)/:albumName/edit', validateAlbum, requireAuth, asyncH
   const { albumId } = req.params;
   const album = await Album.findByPk(albumId);
 
-  const validationErrors = validateAlbum(req);
+  const validationErrors = validationResult(req);
 
   if (validationErrors.isEmpty()) {
     await album.update({
