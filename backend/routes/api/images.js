@@ -66,7 +66,7 @@ router.post('/newImage',
   requireAuth,
   asyncHandler(async(req, res) => {
     // const { imageUrl, imageTitle, content } = req.body;
-    const { imageTitle, content } = req.body;
+    const { albumId, imageTitle, content } = req.body;
     const newImageUploadUrl = await singlePublicFileUpload(req.file);
     // const { imageUrl, imageTitle, content } = req.body;
     // console.log('=====>', req)
@@ -77,6 +77,7 @@ router.post('/newImage',
         userId: req.user.id,
         // imageUrl, 
         imageUrl:newImageUploadUrl,
+        albumId,
         imageTitle, 
         content  
       });
