@@ -29,7 +29,7 @@ const EditImage = () => {
   const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
   console.log('userAlbums outside: ',userAlbums)
 
-  const [imageTitle, setImageTitle] = useState(img?.imageTitle);
+  const [imageTitle, setImageTitle] = useState(img?.imageTitle ? img?.imageTitle : "");
   const [content, setContent] = useState(img?.content);
   // const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
