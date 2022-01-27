@@ -22,16 +22,21 @@ const EditImage = () => {
   const images = Object.values(imagesObj);
   // '+' turns value into the numeric representation
   const img = images.find((image) => +imageId === image.id);
-  // console.log('img: ', img);
+  console.log('img: ', img);
   const sessionUser = useSelector((state) => state.session.user);
   const albumsObj = useSelector((state) => state.albums);
   const albumsArr = Object.values(albumsObj);
   const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
   console.log('userAlbums outside: ',userAlbums)
+  const chosenAlbum = img?.albumId ?userAlbums.find((albObj) => +albObj?.id === +img?.albumId) : null;
+  console.log('chosenAlb: ', chosenAlbum)
+  // const chosenAlbum = userAlbums.find((albObj) => +albObj?.id === +img?.albumId)
+  // console.log('chosenAlb: ', chosenAlbum)
 
   const [imageTitle, setImageTitle] = useState(img?.imageTitle ? img?.imageTitle : "");
   const [content, setContent] = useState(img?.content);
-  const [albumId, setAlbumId] = useState(null);
+  const [albumId, setAlbumId] = useState(chosenAlbum);
+  console.log('albumId',albumId)
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -99,7 +104,7 @@ const EditImage = () => {
           <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
         <label htmlFor='AlbumName'>Album</label>
           <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
-            <option selected value={null}>None</option>
+            <option value={null}>None</option>
             {userAlbums.map((albObj) => {
               return (
                 <option key={albObj?.id} value={albObj?.id} name={albObj?.title}>{albObj?.title}</option>
