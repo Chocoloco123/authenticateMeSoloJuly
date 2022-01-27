@@ -35,11 +35,11 @@ const EditImage = () => {
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
-
+  console.log('herrrrreeeee: ',albumId)
   const handleSubmit = (e) => {
     e.preventDefault();
     const imgData = {
-      // albumId,
+      albumId,
       imageTitle,
       content
     };
@@ -68,6 +68,7 @@ const EditImage = () => {
 
   useEffect(() => {
     if (img) {
+      setAlbumId(albumId)
       setImageTitle(img.imageTitle);
       setContent(img.content);
     }
@@ -101,7 +102,7 @@ const EditImage = () => {
           {userAlbums.map((albObj) => {
             console.log('inside map albumId: ',albumId)
             return (
-              <option key={albObj?.id} value={albObj?.id}>{albObj?.title}</option>
+              <option key={albObj?.id} value={albObj?.id} name={albObj?.title}>{albObj?.title}</option>
               )
             })}
         </select>

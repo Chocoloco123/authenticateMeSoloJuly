@@ -64,12 +64,12 @@ export const addImages = (newImage) => async(dispatch) => {
 }
 
 export const editImage = (imageId, imgData) => async(dispatch) => {
-  const { imageTitle, content } = imgData;
+  const { albumId, imageTitle, content } = imgData;
   // res is response from the backend
   const res = await csrfFetch(`/api/images/${imageId}/edit`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({imageTitle, content}),
+    body: JSON.stringify({albumId, imageTitle, content}),
   });
   
   if (res.ok) {

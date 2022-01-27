@@ -117,11 +117,11 @@ router.patch('/:imageId(\\d+)/edit',
 
     if (validationErrors.isEmpty()) {
       await image.update({ 
-        albumId,
+        albumId: req.body.albumId,
         imageTitle, 
         content  
       });
-      
+      console.log('!!!!!! backend albumId update:',albumId)
       const updatedImg = await Image.findByPk(imageId);
   
       // console.log(res, 'the happy path :)');
