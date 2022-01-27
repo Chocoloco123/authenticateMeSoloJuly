@@ -105,7 +105,7 @@ router.patch('/:imageId(\\d+)/edit',
   validateEditedImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
-    const { imageTitle, content } = req.body;
+    const { albumId, imageTitle, content } = req.body;
   
     const { imageId } = req.params;
     
@@ -117,6 +117,7 @@ router.patch('/:imageId(\\d+)/edit',
 
     if (validationErrors.isEmpty()) {
       await image.update({ 
+        albumId,
         imageTitle, 
         content  
       });

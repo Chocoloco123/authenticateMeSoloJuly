@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, Redirect } from 'react-router-dom';
+import { getAlbums } from '../../store/albums';
 
 
 // Import the thunk creator
@@ -23,8 +24,14 @@ const EditImage = () => {
   const img = images.find((image) => +imageId === image.id);
   // console.log('img: ', img);
   const sessionUser = useSelector((state) => state.session.user);
+  const albumsObj = useSelector((state) => state.albums);
+  const albumsArr = Object.values(albumsObj);
+  const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
+  console.log('userAlbums outside: ',userAlbums)
+
   const [imageTitle, setImageTitle] = useState(img?.imageTitle);
   const [content, setContent] = useState(img?.content);
+  // const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -32,6 +39,7 @@ const EditImage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const imgData = {
+      // albumId,
       imageTitle,
       content
     };
@@ -50,7 +58,7 @@ const EditImage = () => {
       })
         // .then (if (errors.length < 1) history.push(`/images/${imageId}`);
   };
-
+  // console.log('this is albumId: ',albumId)
   useEffect(() => {
     dispatch(getImages())
     // ! keep a watch on this one!
@@ -64,6 +72,10 @@ const EditImage = () => {
       setContent(img.content);
     }
   }, [img]);
+
+  // useEffect(() => {
+  //   dispatch(getAlbums())
+  // }, [dispatch])
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -84,6 +96,15 @@ const EditImage = () => {
           placeholder='Title'></input>
         <label htmlFor='Description' className='labels editImgLabel'>Description</label>
           <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
+        {/* <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
+          
+          {userAlbums.map((albObj) => {
+            return (
+              <option key={albObj?.id} value={albObj?.id}>{albObj?.title}</option>
+              )
+            })}
+            
+        </select> */}
         <div className='imageBtnsBox'>
           <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
         </div>
