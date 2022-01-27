@@ -106,7 +106,7 @@ router.patch('/:imageId(\\d+)/edit',
   requireAuth,
   asyncHandler(async(req, res) => {
     const { albumId, imageTitle, content } = req.body;
-  
+    console.log('>>>>>>>>> backend albumId: ', albumId, imageTitle)
     const { imageId } = req.params;
     
     const image = await Image.findByPk(imageId);

@@ -31,7 +31,7 @@ const EditImage = () => {
 
   const [imageTitle, setImageTitle] = useState(img?.imageTitle ? img?.imageTitle : "");
   const [content, setContent] = useState(img?.content);
-  // const [albumId, setAlbumId] = useState('');
+  const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
@@ -73,9 +73,9 @@ const EditImage = () => {
     }
   }, [img]);
 
-  // useEffect(() => {
-  //   dispatch(getAlbums())
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getAlbums())
+  }, [dispatch])
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -96,15 +96,16 @@ const EditImage = () => {
           placeholder='Title'></input>
         <label htmlFor='Description' className='labels editImgLabel'>Description</label>
           <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
-        {/* <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
+        <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
           
           {userAlbums.map((albObj) => {
+            console.log('inside map albumId: ',albumId)
             return (
               <option key={albObj?.id} value={albObj?.id}>{albObj?.title}</option>
               )
             })}
-            
-        </select> */}
+        </select>
+        {console.log(albumId)}
         <div className='imageBtnsBox'>
           <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
         </div>
