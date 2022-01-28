@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import * as sessionActions from '../../store/session';
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const history = useHistory();
@@ -35,7 +36,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <div className='userIconDiv'>
-        <button onClick={openMenu}>
+        <button className="profileUserBtn" onClick={openMenu}>
           {/* <i className="fas fa-user"></i> */}
           <i className="fas fa-user-circle" />
         </button>
