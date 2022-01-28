@@ -46,6 +46,9 @@ const AlbumImagesPage = () => {
 
   return(
     <div>
+      <div className='backBtnPhotoCont'>
+        <NavLink to={`/albums`} className='backBtnPhoto' >Back to Albums</NavLink>
+      </div>
       <h2 className='pageName titles'>{albumTitle}</h2>
       <div>
         <NavLink to={`/albums/${albumId}/${albumName}/edit`} className="add-img-link image-btn">Edit</NavLink>

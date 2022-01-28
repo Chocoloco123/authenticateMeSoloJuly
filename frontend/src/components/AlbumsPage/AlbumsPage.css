@@ -1,0 +1,29 @@
+.albumCover-Img {
+  height: 222px;
+  width: 330px;
+  object-fit: cover;
+}
+
+.albumImages-Div-Box {
+  display: flex;
+  flex-direction: column;
+}
+
+.albumCover-Img-default {
+  height: 222px;
+  opacity: 0.35;
+  object-fit: scale-down;
+}
+
+.albumTitle-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.albumTitleLink {
+  text-decoration: none;
+}
