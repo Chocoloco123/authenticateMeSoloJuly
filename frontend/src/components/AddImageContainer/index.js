@@ -73,6 +73,14 @@ const AddImage = () => {
     dispatch(getAlbums())
   }, [dispatch])
 
+  // useEffect(() => {
+  //   if (!errors.length) {
+  //     setAlbumId(albumId);
+  //     setImage(image);
+  //     setContent(content);
+  //   }
+  // }, [errors.length, albumId, image, content])
+
   if (!sessionUser) return (
     <Redirect to="/" />
   );
@@ -118,10 +126,10 @@ const AddImage = () => {
         />
         <label htmlFor='album'>Album</label>
         <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
-          <option defaultValue='' ></option>
+          <option value={null}>None</option>
           {userAlbums.map((albObj) => {
             return (
-              <option key={albObj?.id} value={albObj?.id}>{albObj.title}</option>
+              <option key={albObj?.id} value={albObj?.id} name={albObj?.title}>{albObj.title}</option>
             )
           })}
         </select>

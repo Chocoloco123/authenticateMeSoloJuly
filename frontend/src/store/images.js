@@ -36,9 +36,10 @@ export const getImages = () => async(dispatch) => {
 }
 
 export const addImages = (newImage) => async(dispatch) => {
-  const { image, imageTitle, content } = newImage;
+  const { image, albumId, imageTitle, content } = newImage;
   const formData = new FormData();
   if (image) formData.append("image", image);
+  formData.append("albumId", albumId)
   formData.append("imageTitle", imageTitle);
   formData.append("content", content);
 
