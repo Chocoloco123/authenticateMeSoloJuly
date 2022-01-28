@@ -17,6 +17,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Albums' },
         allowNull: true,
+        onDelete: 'CASCADE',
+        hooks: true
       },
       imageUrl: {
         type: Sequelize.STRING(2000),
