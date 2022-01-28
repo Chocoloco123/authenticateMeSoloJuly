@@ -46,17 +46,17 @@ const AlbumImagesPage = () => {
 
   return(
     <div>
-      <h2>{albumTitle}</h2>
+      <h2 className='pageName titles'>{albumTitle}</h2>
       <div>
-        <NavLink to={`/albums/${albumId}/${albumName}/edit`}>Edit</NavLink>
+        <NavLink to={`/albums/${albumId}/${albumName}/edit`} className="add-img-link image-btn">Edit</NavLink>
       </div>
       <div>
-        <button onClick={() => handleDelete(theAlbumId?.id)}>Delete</button>
+        <button onClick={() => handleDelete(theAlbumId?.id)} className="albImgsPageDel">Delete Album</button>
       </div>
-      <div>
+      <div className='imgCont'>
         {albumImagesArr.map((obj) => 
           <div key={"albumImgDiv"+obj.id}>
-            <NavLink to={`/images/${obj?.id}`} key={obj.id}>
+            <NavLink to={`/images/${obj?.id}`} key={obj.id} className='homeImages-anchor'>
               <img 
             src={obj.imageUrl} 
             alt={obj.imageTitle} 
