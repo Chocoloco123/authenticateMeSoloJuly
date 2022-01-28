@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
+import './ImagePage.css'
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
@@ -107,7 +108,7 @@ const SingleImgCont = () => {
         </div>
         {pagePhotosAlbum ? 
           <div>
-            <span>Album:</span> {pagePhotosAlbum}
+            <span className='imgPgAlbumTitle'>Album:</span> {pagePhotosAlbum}
           </div>
         : null
         }
