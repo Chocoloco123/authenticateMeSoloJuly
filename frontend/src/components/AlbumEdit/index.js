@@ -50,6 +50,9 @@ const AlbumEdit = () => {
       <ul>
         {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
       </ul>
+      <div className='backBtnPhotoCont'>
+        <NavLink to={`/albums/${albumId}/${albumName}`} className='backBtnPhoto' >Back to Album</NavLink>
+      </div>
       <form onSubmit={handleSubmit}>
         <h2 className='pageName titles'>Edit Album</h2>
         <input
