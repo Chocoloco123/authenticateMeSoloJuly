@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect, useParams, useHistory } from 'react-router-dom';
 import { editAnAlbum, getAlbums } from '../../store/albums';
+import './AlbumEdit.css';
 
 const AlbumEdit = () => {
   const params = useParams();
@@ -50,13 +51,14 @@ const AlbumEdit = () => {
         {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
       </ul>
       <form onSubmit={handleSubmit}>
-        <h2>Edit Album</h2>
+        <h2 className='pageName titles'>Edit Album</h2>
         <input
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           placeholder='Title'
+          className='albumEditInput'
           />
-        <button type='submit'>Submit</button>
+        <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
       </form>
     </div>
   )
