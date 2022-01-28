@@ -37,7 +37,11 @@ const SingleImgCont = () => {
 
   const img = images.find((image) => +imageId === image.id);
   // find the albumId from img that matches the album id and get the title
-  const pagePhotosAlbum = albums.find((albObj) => +albObj?.id === +img?.albumId)?.title;
+  // const pagePhotosAlbum = albums.find((albObj) => +albObj?.id === +img?.albumId)?.title;
+  const pagePhotosAlbum = albums.find((albObj) => +albObj?.id === +img?.albumId);
+  const pagePhotosAlbumTitle = pagePhotosAlbum?.title;
+  const pagePhotosAlbumImageUrl = pagePhotosAlbum?.imageUrl;
+  const pagePhotosAlbumId = pagePhotosAlbum?.id;
 
   const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
 
@@ -108,7 +112,11 @@ const SingleImgCont = () => {
         </div>
         {pagePhotosAlbum ? 
           <div>
-            <span className='imgPgAlbumTitle'>Album:</span> {pagePhotosAlbum}
+            {/* albums/id/albumName */}
+            <span className='imgPgAlbumTitle'>Album:</span>
+            <NavLink exact to={`/albums/${pagePhotosAlbumId}/${pagePhotosAlbumTitle}`} className='singlePhoto-AlbLink'>
+            {pagePhotosAlbumTitle}  
+            </NavLink> 
           </div>
         : null
         }

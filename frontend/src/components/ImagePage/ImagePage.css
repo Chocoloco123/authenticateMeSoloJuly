@@ -6,3 +6,13 @@
 .imgPgAlbumTitle {
   margin-left: 10px;
 }
+
+.singlePhoto-AlbLink {
+  margin-left: 5px;
+  text-decoration: none;
+  color: darkblue;
+}
+
+.singlePhoto-AlbLink:hover {
+  text-decoration: underline;
+}
