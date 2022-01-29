@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import images from './images';
 import comments from './comments';
 import searchResult from './search';
+import albums from './albums';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   images,
   comments,
-  searchResult
+  searchResult,
+  albums,
 });
 
 let enhancer;

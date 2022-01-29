@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
+import './ImagePage.css'
 
 // Import the thunk creator
 import { getImages, deleteImage } from '../../store/images';
 import { getPageComments, deleteComment } from '../../store/comments';
+import { getAlbums } from '../../store/albums';
 
 const SingleImgCont = () => {
   const history = useHistory();
@@ -21,15 +23,25 @@ const SingleImgCont = () => {
   // get image from our store
   const imagesObj = useSelector((state) => state.images); 
   const commentsObj = useSelector((state) => state.comments);
+  const albumsObj = useSelector((state) => state.albums);
+  console.log(albumsObj)
 
 
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
   const comments = Object.values(commentsObj);
+  const albums = Object.values(albumsObj);
+  console.log('albums: ',albums);
   // console.log('comments: ', comments);
   
 
   const img = images.find((image) => +imageId === image.id);
+  // find the albumId from img that matches the album id and get the title
+  // const pagePhotosAlbum = albums.find((albObj) => +albObj?.id === +img?.albumId)?.title;
+  const pagePhotosAlbum = albums.find((albObj) => +albObj?.id === +img?.albumId);
+  const pagePhotosAlbumTitle = pagePhotosAlbum?.title;
+  const pagePhotosAlbumImageUrl = pagePhotosAlbum?.imageUrl;
+  const pagePhotosAlbumId = pagePhotosAlbum?.id;
 
   const imgComments = comments.filter((pgComment) => +imageId === pgComment.imageId);
 
@@ -56,6 +68,10 @@ const SingleImgCont = () => {
   useEffect(() => {
     dispatch(getPageComments());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAlbums())
+  }, [dispatch])
 
   // useEffect(() => {
   //   dispatch(addAComment())
@@ -94,6 +110,16 @@ const SingleImgCont = () => {
             {img?.content}
           </p>
         </div>
+        {pagePhotosAlbum ? 
+          <div>
+            {/* albums/id/albumName */}
+            <span className='imgPgAlbumTitle'>Album:</span>
+            <NavLink exact to={`/albums/${pagePhotosAlbumId}/${pagePhotosAlbumTitle}`} className='singlePhoto-AlbLink'>
+            {pagePhotosAlbumTitle}  
+            </NavLink> 
+          </div>
+        : null
+        }
       </div> 
       <div className='addCommentDiv'>
         { sessionUser && 

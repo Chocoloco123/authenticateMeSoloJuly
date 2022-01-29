@@ -66,7 +66,7 @@ router.post('/newImage',
   requireAuth,
   asyncHandler(async(req, res) => {
     // const { imageUrl, imageTitle, content } = req.body;
-    const { imageTitle, content } = req.body;
+    const { albumId, imageTitle, content } = req.body;
     const newImageUploadUrl = await singlePublicFileUpload(req.file);
     // const { imageUrl, imageTitle, content } = req.body;
     // console.log('=====>', req)
@@ -77,6 +77,7 @@ router.post('/newImage',
         userId: req.user.id,
         // imageUrl, 
         imageUrl:newImageUploadUrl,
+        albumId,
         imageTitle, 
         content  
       });
@@ -104,8 +105,8 @@ router.patch('/:imageId(\\d+)/edit',
   validateEditedImage, 
   requireAuth,
   asyncHandler(async(req, res) => {
-    const { imageTitle, content } = req.body;
-  
+    const { albumId, imageTitle, content } = req.body;
+    console.log('>>>>>>>>> backend albumId: ', albumId, imageTitle)
     const { imageId } = req.params;
     
     const image = await Image.findByPk(imageId);
@@ -116,10 +117,11 @@ router.patch('/:imageId(\\d+)/edit',
 
     if (validationErrors.isEmpty()) {
       await image.update({ 
+        albumId: req.body.albumId,
         imageTitle, 
         content  
       });
-      
+      console.log('!!!!!! backend albumId update:',albumId)
       const updatedImg = await Image.findByPk(imageId);
   
       // console.log(res, 'the happy path :)');

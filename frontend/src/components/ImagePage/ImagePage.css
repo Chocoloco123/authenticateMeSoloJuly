@@ -2,3 +2,17 @@
   width: 200px;
   height: 200px;
 } */
+
+.imgPgAlbumTitle {
+  margin-left: 10px;
+}
+
+.singlePhoto-AlbLink {
+  margin-left: 5px;
+  text-decoration: none;
+  color: darkblue;
+}
+
+.singlePhoto-AlbLink:hover {
+  text-decoration: underline;
+}

@@ -131,6 +131,32 @@
   color: white !important;
   margin: 5px;
 } */
+.navbarItemEl:hover {
+  /* color: black; */
+  color: white;
+  /* margin: 5px; */
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.navbarEl {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: lightgray;
+  margin-left: 20px;
+  /* margin-right: 20px; */
+}
+
+/* .navBarEl {
+  color: white;
+  text-decoration: none;
+}
+
+.navBarEl:active {
+  background-color: white;
+  text-decoration: none;
+} */
 
 .navUl{
   display: flex;
@@ -362,6 +388,7 @@ body {
 }
 
 .addCommentDiv {
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 

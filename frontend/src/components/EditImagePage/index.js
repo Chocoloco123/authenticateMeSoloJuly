@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, Redirect } from 'react-router-dom';
+import { getAlbums } from '../../store/albums';
 
 
 // Import the thunk creator
@@ -21,17 +22,29 @@ const EditImage = () => {
   const images = Object.values(imagesObj);
   // '+' turns value into the numeric representation
   const img = images.find((image) => +imageId === image.id);
-  // console.log('img: ', img);
+  console.log('img: ', img);
   const sessionUser = useSelector((state) => state.session.user);
-  const [imageTitle, setImageTitle] = useState(img?.imageTitle);
+  const albumsObj = useSelector((state) => state.albums);
+  const albumsArr = Object.values(albumsObj);
+  const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
+  console.log('userAlbums outside: ',userAlbums)
+  const chosenAlbum = img?.albumId ?userAlbums.find((albObj) => +albObj?.id === +img?.albumId) : null;
+  console.log('chosenAlb: ', chosenAlbum)
+  // const chosenAlbum = userAlbums.find((albObj) => +albObj?.id === +img?.albumId)
+  // console.log('chosenAlb: ', chosenAlbum)
+
+  const [imageTitle, setImageTitle] = useState(img?.imageTitle ? img?.imageTitle : "");
   const [content, setContent] = useState(img?.content);
+  const [albumId, setAlbumId] = useState(chosenAlbum);
+  console.log('albumId',albumId)
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
-
+  console.log('herrrrreeeee: ',albumId)
   const handleSubmit = (e) => {
     e.preventDefault();
     const imgData = {
+      albumId,
       imageTitle,
       content
     };
@@ -50,7 +63,7 @@ const EditImage = () => {
       })
         // .then (if (errors.length < 1) history.push(`/images/${imageId}`);
   };
-
+  // console.log('this is albumId: ',albumId)
   useEffect(() => {
     dispatch(getImages())
     // ! keep a watch on this one!
@@ -60,10 +73,15 @@ const EditImage = () => {
 
   useEffect(() => {
     if (img) {
+      setAlbumId(albumId)
       setImageTitle(img.imageTitle);
       setContent(img.content);
     }
-  }, [img]);
+  }, [img, albumId]);
+
+  useEffect(() => {
+    dispatch(getAlbums())
+  }, [dispatch])
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -84,6 +102,15 @@ const EditImage = () => {
           placeholder='Title'></input>
         <label htmlFor='Description' className='labels editImgLabel'>Description</label>
           <textarea onChange={e => setContent(e.target.value)} value={content} placeholder='Description' className='descriptionTxtArea'></textarea>
+        <label htmlFor='AlbumName'>Album</label>
+          <select name="albums" onChange={(e) => setAlbumId(e.target.value)}>
+            <option value={null}>None</option>
+            {userAlbums.map((albObj) => {
+              return (
+                <option key={albObj?.id} value={albObj?.id} name={albObj?.title}>{albObj?.title}</option>
+                )
+              })}
+          </select>
         <div className='imageBtnsBox'>
           <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
         </div>
