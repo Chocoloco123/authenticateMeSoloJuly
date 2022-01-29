@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, useHistory, Redirect } from 'react-router-dom';
@@ -18,7 +18,7 @@ const AlbumImagesPage = () => {
   const albumImagesArr = imagesArr.filter((obj) => (
     obj?.albumId === +albumId
   ));
-  console.log(albumImagesArr)
+  console.log('albImagesArr:',albumImagesArr)
 
   const albumsObj = useSelector((state) => state.albums);
   
@@ -26,10 +26,10 @@ const AlbumImagesPage = () => {
   const albumTitle = albumsObj[albumId]?.title;
   const theAlbumId = albumsObj[albumId];
   // console.log('theAlbumId: ',theAlbumId)
-  
 
   const handleDelete = async(albumId) => {
     await dispatch(deleteAnAlbum(albumId));
+    
     history.push('/albums')
   }
   useEffect(() => {
