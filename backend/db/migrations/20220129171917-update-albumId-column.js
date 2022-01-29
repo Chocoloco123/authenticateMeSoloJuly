@@ -1,5 +1,5 @@
 'use strict';
-​
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     queryInterface.sequelize.transaction(async transaction => {
@@ -12,7 +12,7 @@ module.exports = {
       }, { transaction });
     });
   },
-​
+
   async down (queryInterface, Sequelize) {
     queryInterface.sequelize.transaction(async transaction => {
       await queryInterface.removeConstraint('Images', 'Images_albumId_fkey', { transaction });
