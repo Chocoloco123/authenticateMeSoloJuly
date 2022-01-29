@@ -18,7 +18,7 @@ const AlbumImagesPage = () => {
   const albumImagesArr = imagesArr.filter((obj) => (
     obj?.albumId === +albumId
   ));
-  console.log('albImagesArr:',albumImagesArr)
+  // console.log('albImagesArr:',albumImagesArr)
 
   const albumsObj = useSelector((state) => state.albums);
   

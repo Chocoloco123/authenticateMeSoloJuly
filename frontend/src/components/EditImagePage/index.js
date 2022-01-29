@@ -22,25 +22,25 @@ const EditImage = () => {
   const images = Object.values(imagesObj);
   // '+' turns value into the numeric representation
   const img = images.find((image) => +imageId === image.id);
-  console.log('img: ', img);
+  // console.log('img: ', img);
   const sessionUser = useSelector((state) => state.session.user);
   const albumsObj = useSelector((state) => state.albums);
   const albumsArr = Object.values(albumsObj);
   const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
-  console.log('userAlbums outside: ',userAlbums)
+  // console.log('userAlbums outside: ',userAlbums)
   const chosenAlbum = img?.albumId ?userAlbums.find((albObj) => +albObj?.id === +img?.albumId) : null;
-  console.log('chosenAlb: ', chosenAlbum)
+  // console.log('chosenAlb: ', chosenAlbum)
   // const chosenAlbum = userAlbums.find((albObj) => +albObj?.id === +img?.albumId)
   // console.log('chosenAlb: ', chosenAlbum)
 
   const [imageTitle, setImageTitle] = useState(img?.imageTitle ? img?.imageTitle : "");
   const [content, setContent] = useState(img?.content);
   const [albumId, setAlbumId] = useState(chosenAlbum);
-  console.log('albumId',albumId)
+  // console.log('albumId',albumId)
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
-  console.log('herrrrreeeee: ',albumId)
+  // console.log('herrrrreeeee: ',albumId)
   const handleSubmit = (e) => {
     e.preventDefault();
     const imgData = {

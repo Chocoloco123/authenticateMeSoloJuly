@@ -26,8 +26,8 @@ const AddImage = () => {
   const albumsObj = useSelector((state) => state.albums);
   const albumsArr = Object.values(albumsObj);
   const userAlbums = albumsArr.filter((obj) => obj.userId === sessionUser.id);
-  console.log('userAlbs: ',userAlbums);
-  console.log('ids: ', userAlbums[0])
+  // console.log('userAlbs: ',userAlbums);
+  // console.log('ids: ', userAlbums[0])
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   const newImage = {

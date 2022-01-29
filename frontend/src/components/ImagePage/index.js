@@ -24,14 +24,14 @@ const SingleImgCont = () => {
   const imagesObj = useSelector((state) => state.images); 
   const commentsObj = useSelector((state) => state.comments);
   const albumsObj = useSelector((state) => state.albums);
-  console.log(albumsObj)
+  // console.log(albumsObj)
 
 
   // console.log('imagesObj: ', imagesObj);
   const images = Object.values(imagesObj);
   const comments = Object.values(commentsObj);
   const albums = Object.values(albumsObj);
-  console.log('albums: ',albums);
+  // console.log('albums: ',albums);
   // console.log('comments: ', comments);
   
 

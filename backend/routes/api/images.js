@@ -106,7 +106,7 @@ router.patch('/:imageId(\\d+)/edit',
   requireAuth,
   asyncHandler(async(req, res) => {
     const { albumId, imageTitle, content } = req.body;
-    console.log('>>>>>>>>> backend albumId: ', albumId, imageTitle)
+    // console.log('>>>>>>>>> backend albumId: ', albumId, imageTitle)
     const { imageId } = req.params;
     
     const image = await Image.findByPk(imageId);
@@ -121,7 +121,7 @@ router.patch('/:imageId(\\d+)/edit',
         imageTitle, 
         content  
       });
-      console.log('!!!!!! backend albumId update:',albumId)
+      // console.log('!!!!!! backend albumId update:',albumId)
       const updatedImg = await Image.findByPk(imageId);
   
       // console.log(res, 'the happy path :)');
