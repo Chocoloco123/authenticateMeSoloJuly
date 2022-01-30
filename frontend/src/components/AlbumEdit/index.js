@@ -14,8 +14,17 @@ const AlbumEdit = () => {
   const album = albumsObj[albumId];
 
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(album?.title);
+  const [title, setTitle] = useState(album?.title ? album?.title : '');
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    const validationErrors = [];
+    if (!title || title === '' || title.trim() === '') validationErrors.push("please submit a title")
+    if (title?.length < 2 || title?.length > 100) validationErrors.push('Please submit a title between 2 to 100 characters')
+
+    setErrors(validationErrors)
+  }, [title])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,10 +33,12 @@ const AlbumEdit = () => {
       title
     }
 
-    let theEditedAlbum = dispatch(editAnAlbum(album.id, album.title ,editedAlbum));
+    if (!errors.length) {
+      let theEditedAlbum = dispatch(editAnAlbum(album.id, album?.title ,editedAlbum));
 
-    if (theEditedAlbum) {
-      history.push(`/albums`)
+      if (theEditedAlbum) {
+        history.push(`/albums`)
+      }
     }
   }
 
@@ -47,19 +58,20 @@ const AlbumEdit = () => {
 
   return (
     <div>
-      <ul>
-        {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
-      </ul>
       <div className='backBtnPhotoCont'>
         <NavLink to={`/albums/${albumId}/${albumName}`} className='backBtnPhoto' >Back to Album</NavLink>
       </div>
       <form onSubmit={handleSubmit}>
         <h2 className='pageName titles'>Edit Album</h2>
+        <ul>
+          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
+        </ul>
         <input
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           placeholder='Title'
           className='albumEditInput'
+          required
           />
         <button type='submit' className=' image-btn submitEditBtn'>Submit</button>
       </form>
