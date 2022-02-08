@@ -60,6 +60,18 @@
 .userButton-Icon-Div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
   /* position: relative; */
   /* top: 10px; */
+}
+
+
+.logout-Li {
+  color: black;
+}
+
+.profileDropdownBox {
+  display: flex;
+  justify-content: center;
 }

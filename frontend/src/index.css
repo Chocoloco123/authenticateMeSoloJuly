@@ -75,6 +75,7 @@
   padding-right: 20px;
   padding-bottom: 50px;
   align-items: center;
+  margin-right: 20px;
 }
 
 .boxAroundNav {
@@ -184,15 +185,21 @@
 }
 
 .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-y: hidden;
   text-decoration: none;
   list-style-type: none;
-  background-color: gray;
+  /* background-color: gray; */
+  background-color: white;
   border-radius: 5px;
   /* padding: 5px; */
-  padding: 4px;
-  margin-right: 10px;
+  padding: 5px;
+  margin-right: 20px;
   position: absolute;
+  width:fit-content;
+  border: 1px solid gray;
   /* margin: 0px; */
   /* margin-right: 10px; */
 }
