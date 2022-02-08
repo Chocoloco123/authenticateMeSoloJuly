@@ -30,7 +30,10 @@ function Navigation({ isLoaded }){
           {sessionUser ? <SearchBar /> : null}
           <div className='navDiv'>
             <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+            {sessionUser ?
             <NavLink exact to="/albums" className="navbarEl" id='navbarItemLeft'>Albums</NavLink>
+            : null
+            }
             {isLoaded && sessionLinks}
           </div>
         </div>
