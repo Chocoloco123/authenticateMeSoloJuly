@@ -75,6 +75,7 @@
   padding-right: 20px;
   padding-bottom: 50px;
   align-items: center;
+  margin-right: 20px;
 }
 
 .boxAroundNav {
@@ -110,7 +111,7 @@
 
 #navbarItemLeft:hover {
   /* color: black; */
-  color: white;
+  color: lightgray;
   /* margin: 5px; */
   text-decoration: none;
   border-radius: 3px;
@@ -121,7 +122,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: lightgray;
+  /* color: lightgray; */
   /* margin-right: 20px; */
 }
 
@@ -184,14 +185,21 @@
 }
 
 .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-y: hidden;
   text-decoration: none;
   list-style-type: none;
-  background-color: gray;
+  /* background-color: gray; */
+  background-color: white;
   border-radius: 5px;
   /* padding: 5px; */
-  padding: 4px;
-  margin-right: 10px;
+  padding: 5px;
+  margin-right: 20px;
+  position: absolute;
+  width:fit-content;
+  border: 1px solid gray;
   /* margin: 0px; */
   /* margin-right: 10px; */
 }
@@ -202,9 +210,7 @@
   padding: 5px;
 }
 
-/* .profileDropdownBox {
-  background-color: gray;
-} */
+
 
 .formContainer {
   display: flex;
