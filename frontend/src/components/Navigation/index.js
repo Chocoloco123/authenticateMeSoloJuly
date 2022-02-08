@@ -30,8 +30,12 @@ function Navigation({ isLoaded }){
           {sessionUser ? <SearchBar /> : null}
           <div className='navDiv'>
             <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+            {sessionUser ? 
+            <NavLink exact to="/images/addImage" className="addImg-Btn-Nav"><i class="fas fa-cloud-upload-alt"></i></NavLink>
+            : null
+            }
             {sessionUser ?
-            <NavLink exact to="/albums" className="navbarEl" id='navbarItemLeft'>Albums</NavLink>
+            <NavLink exact to="/albums" className="navbarEl" id='navbarItemLeft'><i class="far fa-images"></i></NavLink>
             : null
             }
             {isLoaded && sessionLinks}

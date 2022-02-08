@@ -8,3 +8,8 @@
 .profileUserBtn:hover {
   cursor: pointer;
 }
+
+.addImg-Btn-Nav {
+  color: white;
+  margin-left: 20px;
+}

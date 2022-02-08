@@ -38,7 +38,8 @@ function ProfileButton({ user }) {
       <div className='userIconDiv'>
         <button className="profileUserBtn" onClick={openMenu}>
           {/* <i className="fas fa-user"></i> */}
-          <i className="fas fa-user-circle" />
+          {/* <i className="fas fa-user-circle" /> */}
+          <i class="fas fa-camera-retro"></i>
         </button>
       </div>
       {showMenu && (
