@@ -192,6 +192,7 @@
   /* padding: 5px; */
   padding: 4px;
   margin-right: 10px;
+  position: absolute;
   /* margin: 0px; */
   /* margin-right: 10px; */
 }
@@ -202,9 +203,7 @@
   padding: 5px;
 }
 
-/* .profileDropdownBox {
-  background-color: gray;
-} */
+
 
 .formContainer {
   display: flex;
