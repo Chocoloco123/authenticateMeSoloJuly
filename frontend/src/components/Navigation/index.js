@@ -29,7 +29,7 @@ function Navigation({ isLoaded }){
         <div className='navSearchNLinks'>  
           {sessionUser ? <SearchBar /> : null}
           <div className='navDiv'>
-            <NavLink exact to="/home" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
+            <NavLink exact to="/home" className="navbarItem navbar-Home" id='navbarItemLeft'>Home</NavLink>
             {sessionUser ? 
             <NavLink exact to="/images/addImage" className="addImg-Btn-Nav"><i class="fas fa-cloud-upload-alt"></i></NavLink>
             : null
