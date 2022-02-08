@@ -35,7 +35,7 @@ function Navigation({ isLoaded }){
             : null
             }
             {sessionUser ?
-            <NavLink exact to="/albums" className="navbarEl" id='navbarItemLeft'><i class="far fa-images"></i></NavLink>
+            <NavLink exact to="/albums" className="navbarEl navbar-Albums" id='navbarItemLeft'><i class="far fa-images navbar-Albums"></i></NavLink>
             : null
             }
             {isLoaded && sessionLinks}

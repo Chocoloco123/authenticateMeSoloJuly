@@ -3,6 +3,9 @@
   height: 30px;
   width: 30px;
   background-color: white;
+  /* border: solid 2px #15510e; */
+  border: none;
+  background-color: rgb(104, 52, 157);
 }
 
 .profileUserBtn:hover {
@@ -12,4 +15,22 @@
 .addImg-Btn-Nav {
   color: white;
   margin-left: 20px;
+}
+
+.addImg-Btn-Nav:hover {
+  color: lightgray;
+}
+
+.navbar-Albums {
+  color: white;
+}
+
+.navbar-Albums:hover {
+  color: lightgray;
+}
+
+.userCamera {
+  background: linear-gradient(90deg, yellow, rgb(252, 64, 95));
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.9)
 }
