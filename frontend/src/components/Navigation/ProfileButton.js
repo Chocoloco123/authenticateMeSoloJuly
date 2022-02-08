@@ -47,8 +47,9 @@ function ProfileButton({ user }) {
           <ul className="profile-dropdown">
             <li className="logout-Li">Hello, {user.username}!</li>
             {/* <li>{user.email}</li> */}
-            <li>
-              <button onClick={logout} className='image-btn logoutBtn'>Log Out</button>
+            <li className='logout-Btn-Li'>
+              {/* <button onClick={logout} className='image-btn logoutBtn'>Log Out</button> */}
+              <button onClick={logout} className='logout-Button'>Log Out</button>
             </li>
           </ul>
         </div>

@@ -68,10 +68,40 @@
 
 
 .logout-Li {
-  color: black;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  /* color: black;
+  width: fit-content; */
 }
 
 .profileDropdownBox {
   display: flex;
   justify-content: center;
+}
+
+.logout-Button {
+  background-color: transparent;
+  border: none;
+  width: max-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* padding: 5px; */
+}
+
+.logout-Button:hover {
+  /* background-color: lightgray; */
+}
+
+.logout-Btn-Li {
+  display: flex;
+  justify-content: center;
+  width: stretch;
+  margin-top: 10px;
+  /* background-color: gray; */
+}
+
+.logout-Btn-Li:hover {
+  /* background-color: gray; */
+  background-color: lightgray;
 }
