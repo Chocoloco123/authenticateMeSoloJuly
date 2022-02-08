@@ -2,16 +2,23 @@
   border-radius: 50%;
   height: 30px;
   width: 30px;
-  background-color: white;
+  /* background-color: white; */
   /* border: solid 2px #15510e; */
   border: none;
-  background-color: rgb(104, 52, 157);
+  background-color: gold;
+  /* background-color: rgb(104, 52, 157); */
+  /* background-color: rgb(95, 62, 140); */
+  /* background-color: rgba(21, 146, 82, 0.509); */
   transition: .5s;
 }
 
 .profileUserBtn:hover {
   cursor: pointer;
-  background-color: rgb(93, 42, 143);
+  color: gray;
+  background-color: rgb(213, 182, 4);
+  /* background-color: rgb(93, 42, 143); */
+  /* background-color: rgb(74, 47, 113); */
+  /* background-color: rgba(20, 125, 71, 0.509); */
 }
 
 .addImg-Btn-Nav {
@@ -32,14 +39,17 @@
 }
 
 .userCamera {
-  background: linear-gradient(90deg, yellow, rgb(252, 64, 95));
+  /* background: linear-gradient(90deg, lightblue, rgb(213, 117, 133)); */
   border-radius: 2px;
-  color: rgba(255, 255, 255, 0.9);
+  /* color: rgba(255, 255, 255, 0.797); */
+  /* color: white; */
+  color: rgb(72, 72, 72);
+  /* background: lightblue; */
   transition: 0.5s;
 }
 
 .userCamera:hover {
-  color: lightgray;
+  color: black;
 }
 
 .navbar-Home {
